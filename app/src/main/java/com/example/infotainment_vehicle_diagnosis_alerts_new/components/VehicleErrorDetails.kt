@@ -199,14 +199,14 @@ fun ErrorDetails(modifier: Modifier, ignore: JSONObject, viewModel: MainViewMode
                                 text = "Error Code",
                                 style = TextStyle(
                                     color = Color.White,
-                                    fontSize = 14.sp
+                                    fontSize = 12.sp
                                 )
                             )
                             Text(
                                 text = jsonObject.get("dtc").toString(),
                                 style = TextStyle(
                                     color = Color(0xFFF37900),
-                                    fontSize = 14.sp
+                                    fontSize = 18.sp
                                 )
                             )
                         }
