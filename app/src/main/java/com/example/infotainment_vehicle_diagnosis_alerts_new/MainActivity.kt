@@ -15,9 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.navigation.compose.rememberNavController
 import com.example.infotainment_vehicle_diagnosis_alerts_new.components.MainViewModel
-import com.example.infotainment_vehicle_diagnosis_alerts_new.components.VehicleAfterDiagnosed
-import com.example.infotainment_vehicle_diagnosis_alerts_new.components.VehicleErrorDetails
-import com.example.infotainment_vehicle_diagnosis_alerts_new.components.VehicleNotInScanMode
 import com.example.infotainment_vehicle_diagnosis_alerts_new.navigation.AppNavHost
 import com.example.infotainment_vehicle_diagnosis_alerts_new.ui.theme.InfotainmentVehicleDiagnosisAlertsNewTheme
 

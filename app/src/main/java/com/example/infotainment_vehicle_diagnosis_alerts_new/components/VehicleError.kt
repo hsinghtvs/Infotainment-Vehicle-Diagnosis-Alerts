@@ -1,21 +1,19 @@
 package com.example.infotainment_vehicle_diagnosis_alerts_new.components
 
+import android.content.ComponentName
 import android.content.Context
-import android.util.Log
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -25,158 +23,37 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.infotainment_vehicle_diagnosis_alerts_new.R
-import com.example.infotainment_vehicle_diagnosis_alerts_new.heightOfImage
 import com.example.infotainment_vehicle_diagnosis_alerts_new.navigation.NavigationItem
-import com.example.infotainment_vehicle_diagnosis_alerts_new.navigation.Screen
-import com.example.infotainment_vehicle_diagnosis_alerts_new.widthOfImage
 import org.json.JSONArray
 import org.json.JSONObject
 
-
 @Composable
-fun VehicleAfterDiagnosed(navController: NavController,viewModel: MainViewModel) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(color = Color(0xFF090F26))
-            .paint(
-                painterResource(id = R.drawable.background),
-                contentScale = ContentScale.FillBounds
-            ),
-        verticalArrangement = Arrangement.SpaceBetween
-    ) {
+fun VehicleError(modifier: Modifier, viewModel: MainViewModel, navController: NavController) {
+    ErrorSection(modifier = modifier, navController = navController, viewModel = viewModel)
 
-        Row(
-            modifier = Modifier
-                .padding(10.dp)
-                .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(
-                modifier = Modifier.padding(10.dp),
-                text = "VEHICLE DIGITAL DIAGNOSIS",
-                style = TextStyle(
-                    color = Color.White
-                )
-            )
-
-            val nonSelectedGradient = Brush.verticalGradient(
-                listOf(
-                    Color(0xFF090F26),
-                    Color(0xFF255AF5)
-                )
-            )
-
-            Spacer(modifier = Modifier.size(20.dp))
-
-            Row(
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Box(
-                    modifier = Modifier
-                        .padding(10.dp)
-                        .background(
-                            brush =
-                            nonSelectedGradient,
-                            shape = RoundedCornerShape(
-                                topStart = 30.dp,
-                                topEnd = 30.dp,
-                                bottomEnd = 30.dp,
-                                bottomStart = 30.dp
-                            )
-
-                        )
-                        .border(
-                            width = 1.dp,
-                            color = Color(0xFF3C4042),
-                            shape = RoundedCornerShape(
-                                topStart = 30.dp,
-                                topEnd = 30.dp,
-                                bottomEnd = 30.dp,
-                                bottomStart = 30.dp
-                            )
-                        ),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        modifier = Modifier.padding(10.dp),
-                        text = "ERROR SECTION",
-                        style = TextStyle(
-                            color = Color.White
-                        )
-                    )
-                }
-                Spacer(modifier = Modifier.size(20.dp))
-                Text(
-                    modifier = Modifier.padding(10.dp),
-                    text = "NON ERROR SECTION",
-                    style = TextStyle(
-                        color = Color.White
-                    )
-                )
-            }
-        }
-
-        Spacer(modifier = Modifier.weight(0.2f))
-
-        Row(
-            modifier = Modifier
-                .weight(2f)
-                .padding(end = 30.dp)
-                .fillMaxHeight(),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-
-            Image(
-                modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .weight(1.5f)
-                    .size(
-                        height = (heightOfImage / 4).dp,
-                        width = (widthOfImage / 30).dp
-                    ),
-                painter = painterResource(id = R.drawable.car_health),
-                contentDescription = "",
-                contentScale = ContentScale.FillBounds
-            )
-
-            Spacer(modifier = Modifier.weight(0.5f))
-            ErrorSection(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .weight(1f),
-                navController,
-                viewModel
-            )
-        }
-    }
 }
 
 
 @Composable
-fun ErrorSection(modifier: Modifier, navController: NavController,viewModel: MainViewModel) {
+fun ErrorSection(modifier: Modifier, navController: NavController, viewModel: MainViewModel) {
 
     val context = LocalContext.current
     val carpmObject = JSONObject(loadErrors(context))
@@ -266,7 +143,7 @@ fun ErrorSection(modifier: Modifier, navController: NavController,viewModel: Mai
     var columnWidth by remember { mutableIntStateOf(0) };
 
     ConstraintLayout(
-        modifier = modifier
+        modifier = modifier.fillMaxHeight()
     ) {
         val (errorLazyColumn, rsaBox) = createRefs()
         LazyColumn(
@@ -280,7 +157,7 @@ fun ErrorSection(modifier: Modifier, navController: NavController,viewModel: Mai
         ) {
             items(modules) {
                 groupErrorCodeArray.get(it)?.let { errorCodesList ->
-                    ErrorBox(it, errorCodesList, navController,viewModel)
+                    ErrorBox(it, errorCodesList, navController, viewModel)
                 }
             }
         }
@@ -326,7 +203,11 @@ fun ErrorSection(modifier: Modifier, navController: NavController,viewModel: Mai
                     Text(
                         modifier = Modifier.padding(start = 10.dp),
                         text = "Critical Errors Found",
-                        style = TextStyle(color = Color.White)
+                        style = TextStyle(
+                            color = Color.White, fontFamily = FontFamily(
+                                Font(R.font.hankengrotesk_extrabold)
+                            )
+                        )
                     )
                     Spacer(modifier = Modifier.height(1.dp))
                     Text(
@@ -336,7 +217,8 @@ fun ErrorSection(modifier: Modifier, navController: NavController,viewModel: Mai
                         maxLines = 1,
                         style = TextStyle(
                             color = Color.White,
-                            textAlign = TextAlign.Justify
+                            textAlign = TextAlign.Justify,
+                            fontFamily = FontFamily(Font(R.font.hankengrotesk_extrabold))
                         )
                     )
                 }
@@ -344,7 +226,16 @@ fun ErrorSection(modifier: Modifier, navController: NavController,viewModel: Mai
                 Spacer(modifier = Modifier.width(10.dp))
                 ClickableText(
                     onClick = {
-                        // Navigate to RSA App
+                        val intent = Intent(Intent.ACTION_MAIN)
+                        intent.action = Intent.ACTION_SEND
+                        intent.component =
+                            ComponentName(
+                                "com.example.infotainment_rsa",
+                                "com.example.infotainment_rsa.MainActivity"
+                            )
+                        intent.putExtra("service", "Missfire in engine cylinder error 204")
+                        intent.type = "text/plain"
+                        context.startActivity(intent)
                     },
                     modifier = Modifier
                         .weight(1f)

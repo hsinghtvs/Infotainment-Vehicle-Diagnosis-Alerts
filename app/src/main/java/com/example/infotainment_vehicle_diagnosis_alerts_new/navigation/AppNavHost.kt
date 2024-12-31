@@ -6,11 +6,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.infotainment_vehicle_diagnosis_alerts_new.components.MainViewModel
-import com.example.infotainment_vehicle_diagnosis_alerts_new.components.VehicleAfterDiagnosed
-import com.example.infotainment_vehicle_diagnosis_alerts_new.components.VehicleDuringScanning
 import com.example.infotainment_vehicle_diagnosis_alerts_new.components.VehicleErrorDetails
 import com.example.infotainment_vehicle_diagnosis_alerts_new.components.VehicleNotInScanMode
-import org.json.JSONObject
 
 @Composable
 fun AppNavHost(
@@ -25,16 +22,10 @@ fun AppNavHost(
         startDestination = startDestination
     ) {
         composable(NavigationItem.BeforeScan.route) {
-            VehicleNotInScanMode(navController)
-        }
-        composable(NavigationItem.AfterScan.route) {
-            VehicleAfterDiagnosed(navController,viewModel)
+            VehicleNotInScanMode(navController,viewModel)
         }
         composable(NavigationItem.ErrorReports.route) {
             VehicleErrorDetails(navController, viewModel)
-        }
-        composable(NavigationItem.DuringScanning.route) {
-            VehicleDuringScanning(navController,viewModel)
         }
     }
 }

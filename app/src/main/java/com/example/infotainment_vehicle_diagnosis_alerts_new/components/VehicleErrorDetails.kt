@@ -31,6 +31,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -75,7 +77,8 @@ fun VehicleErrorDetails(navController: NavController, viewModel: MainViewModel) 
             style = TextStyle(
                 color = Color.White,
                 fontWeight = FontWeight.Bold,
-                fontSize = 24.sp
+                fontSize = 24.sp,
+                fontFamily = FontFamily(Font(R.font.hankengrotesk_extrabold))
             )
         )
 
@@ -148,7 +151,8 @@ fun ErrorDescription(
                 text = meaning,
                 style = TextStyle(
                     color = Color.White,
-                    fontSize = 16.sp
+                    fontSize = 16.sp,
+                    fontFamily = FontFamily(Font(R.font.hankengrotesk_extrabold))
                 )
             )
             Spacer(modifier = Modifier.size(10.dp))
@@ -156,7 +160,8 @@ fun ErrorDescription(
                 text = dtc,
                 style = TextStyle(
                     color = Color.White,
-                    fontSize = 10.sp
+                    fontSize = 10.sp,
+                    fontFamily = FontFamily(Font(R.font.hankengrotesk_medium))
                 )
             )
         }
@@ -183,7 +188,8 @@ fun ErrorDetails(modifier: Modifier, ignore: JSONObject, viewModel: MainViewMode
                     text = "Engine Errors",
                     style = TextStyle(
                         color = Color.White,
-                        fontSize = 16.sp
+                        fontSize = 16.sp,
+                        fontFamily = FontFamily(Font(R.font.hankengrotesk_extrabold))
                     )
                 )
 
@@ -272,7 +278,8 @@ fun ErrorDetails(modifier: Modifier, ignore: JSONObject, viewModel: MainViewMode
                                     color = Color.White,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 10.sp,
-                                    textAlign = TextAlign.Center
+                                    textAlign = TextAlign.Center,
+                                    fontFamily = FontFamily(Font(R.font.hankengrotesk_medium))
                                 )
                             )
                             Spacer(modifier = Modifier.size(10.dp))
@@ -300,7 +307,8 @@ fun ErrorDetails(modifier: Modifier, ignore: JSONObject, viewModel: MainViewMode
                                     color = Color(0xFFF37900),
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 10.sp,
-                                    textAlign = TextAlign.Start
+                                    textAlign = TextAlign.Start,
+                                    fontFamily = FontFamily(Font(R.font.hankengrotesk_regular))
                                 )
                             )
                         }
@@ -333,7 +341,8 @@ fun ErrorDetails(modifier: Modifier, ignore: JSONObject, viewModel: MainViewMode
                                         color = Color.White,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 10.sp,
-                                        textAlign = TextAlign.Center
+                                        textAlign = TextAlign.Center,
+                                        fontFamily = FontFamily(Font(R.font.hankengrotesk_medium))
                                     )
                                 )
                                 Spacer(modifier = Modifier.size(10.dp))
@@ -378,7 +387,8 @@ fun ErrorDetails(modifier: Modifier, ignore: JSONObject, viewModel: MainViewMode
                                         color = Color.White,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 10.sp,
-                                        textAlign = TextAlign.Center
+                                        textAlign = TextAlign.Center,
+                                        fontFamily = FontFamily(Font(R.font.hankengrotesk_medium))
                                     )
                                 )
                                 Spacer(modifier = Modifier.size(10.dp))
@@ -390,7 +400,8 @@ fun ErrorDetails(modifier: Modifier, ignore: JSONObject, viewModel: MainViewMode
                                         color = Color(0xFFF34A443),
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 10.sp,
-                                        textAlign = TextAlign.Center
+                                        textAlign = TextAlign.Center,
+                                        fontFamily = FontFamily(Font(R.font.hankengrotesk_regular))
                                     )
                                 )
                             }
@@ -424,7 +435,8 @@ fun ErrorExplanation(modifier: Modifier, ignore: JSONObject, viewModel: MainView
             text = jsonObject.get("descriptions").toString().replace("[","").replace("]" ,""),
             style = TextStyle(
                 color = Color.White.copy(alpha = 0.6f),
-                fontSize = 14.sp
+                fontSize = 14.sp,
+                fontFamily = FontFamily(Font(R.font.hankengrotesk_regular))
             )
         )
         Spacer(modifier = Modifier.size(10.dp))
@@ -444,7 +456,8 @@ fun ErrorExplanation(modifier: Modifier, ignore: JSONObject, viewModel: MainView
                     text = "$int . $causes",
                     style = TextStyle(
                         color = Color.White.copy(alpha = 0.6f),
-                        fontSize = 14.sp
+                        fontSize = 14.sp,
+                        fontFamily = FontFamily(Font(R.font.hankengrotesk_regular))
                     )
                 )
             }
