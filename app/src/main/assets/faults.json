@@ -1,95 +1,81 @@
 {
-  "license_plate": "TN138302",
-  "report_url": "https://carpminspectionreports.s3.amazonaws.com/mechanic/reports/reports/004/664/821/original/_TN138302_1726635222.pdf?1726635228",
-  "car_company": "Honda",
+  "license_plate": "TN02BD0498",
+  "report_url": "https://carpminspectionreports.s3.amazonaws.com/mechanic/reports/reports/004/996/546/original/_TN02BD0498_1736226990.pdf?1736226995",
+  "car_company": "Tata",
   "status": 1,
-  "time": "2024-09-18T10:23:48.483+05:30",
+  "time": "2025-01-07T10:46:35.159+05:30",
   "mechanic_name": null,
-  "mechanic_email": "9840203871@tvs.in",
-  "vin": "MAKDD174DEN210210",
+  "mechanic_email": "8122550376@tvs.in",
+  "vin": "MAT608071FPE23613",
   "scan_ended": "automatic_success",
   "faulty_modules": [
     "Engine",
-    "Vehicle Stability Assist(VSA)"
+    "ABS",
+    "BCM",
+    "EPS",
+    "Instrument Cluster",
+    "Others"
   ],
   "non_faulty_modules": [
-    "EPS",
-    "Acoustic Vehicle Alerting System",
-    "Gauge system",
-    "ABS/EBCM",
-    "BCM",
-    "Immobilizer",
     "Airbag",
-    "Head Up Display",
-    "i-Shift (AMT)",
-    "Electric Servo Brake System",
-    "CAN Gateway",
-    "Intake Sound Creator",
+    "Transmission",
     "HVAC",
-    "Others"
+    "Parking Assist",
+    "Infotainment"
   ],
   "code_details": [
     {
-      "dtc": "P0303",
+      "dtc": "P0053",
       "severity" : "High",
-      "meaning": "Cylinder 3 Misfire Detected",
+      "meaning": "HO2S Heater Resistance (Bank 1 Sensor 1)",
       "module": "Engine",
-      "status": "Current",
+      "status": "Pending",
       "descriptions": [
-        "The fault code P0303 indicates that the Engine Control Module (ECM) detected a misfire in cylinder 3. This misfire can cause damage to the engine and lead to reduced performance."
+        "The fault code P0053 indicates that there is an issue with the heater resistance of the oxygen sensor in bank 1, sensor 1. This may result in poor engine performance and increased emissions."
       ],
       "causes": [
-        "Faulty spark plug in cylinder 3",
-        "Bad ignition coil in cylinder 3",
-        "Clogged or dirty fuel injector in cylinder 3",
-        "Low compression in cylinder 3",
-        "Vacuum leak in cylinder 3",
-        "Faulty Engine Control Module (ECM)"
+        "Faulty oxygen sensor",
+        "Damaged wiring or connections in the circuit",
+        "Corroded or loose electrical connections",
+        "Failed engine control module (ECM)"
       ],
       "solutions": [
-        "Replace spark plug in cylinder 3",
-        "Replace ignition coil in cylinder 3",
-        "Clean or replace fuel injector in cylinder 3",
-        "Check and repair any issues with compression in cylinder 3",
-        "Check for and repair any vacuum leaks in cylinder 3",
-        "Replace the Engine Control Module (ECM) if necessary"
+        "Replace the oxygen sensor",
+        "Check and repair any damaged wiring or connections",
+        "Tighten or clean any loose or corroded electrical connections",
+        "Replace the engine control module (ECM) if necessary"
       ],
       "symptoms": [
-        "Engine misfires or runs erratically",
         "Illuminated check engine light",
-        "Reduced engine power or acceleration",
-        "Rough idle or stalling"
+        "Poor engine performance",
+        "Increased emissions"
       ]
     },
     {
-      "dtc": "P0562",
-      "severity" : "Severe",
-      "meaning": "System Voltage Low",
+      "dtc": "P0243",
+      "severity" : "Critical",
+      "meaning": "The fault code P0243 refers to Turbocharger Wastegate Solenoid A Malfunction.",
       "module": "Engine",
-      "status": "Current",
+      "status": "Pending",
       "descriptions": [
-        "The fault code P0562 indicates that the system voltage in the vehicle is below normal levels, which can cause various electrical system malfunctions and other issues."
+        "This fault code indicates a problem with the turbocharger wastegate solenoid circuit which controls the flow of exhaust gases to the turbocharger. This may result in poor engine performance and/or reduced fuel efficiency."
       ],
       "causes": [
-        "Faulty battery or alternator",
-        "Loose or corroded battery or alternator connections",
-        "Electrical system overload",
-        "Failed voltage regulator",
-        "Malfunctioning engine control module (ECM)"
+        "Failed wastegate solenoid",
+        "Faulty wiring or connections in the circuit",
+        "Corrosion or damage to electrical connections",
+        "Failed engine control module (ECM)"
       ],
       "solutions": [
-        "Replace the battery or alternator if either is faulty",
-        "Check and repair any damaged or corroded battery or alternator connections",
-        "Reduce electrical system load or upgrade to a higher capacity alternator",
-        "Replace the voltage regulator if necessary",
-        "Replace the engine control module (ECM) if it is malfunctioning"
+        "Replace the wastegate solenoid",
+        "Check and repair any damaged wiring or connections",
+        "Clean or replace corroded electrical connections",
+        "Replace the engine control module (ECM) if necessary"
       ],
       "symptoms": [
-        "Illuminated battery warning light on the dashboard",
-        "Difficulty starting the engine or complete failure to start",
-        "Dimming or flickering headlights and interior lights",
-        "Loss of power to electrical components such as power windows or radio",
-        "Reduced fuel economy"
+        "Decreased engine performance",
+        "Reduced fuel efficiency",
+        "Illuminated check engine light"
       ]
     },
     {
@@ -97,7 +83,7 @@
       "severity" : "Low",
       "meaning": "Random/Multiple Cylinder Misfire Detected",
       "module": "Engine",
-      "status": "Current",
+      "status": "Pending",
       "descriptions": [
         "The fault code P0300 indicates that the engine control module (ECM) has detected a random or multiple cylinder misfire. This can occur due to a number of reasons and may cause the engine to run poorly or not start at all."
       ],
@@ -125,99 +111,182 @@
       ]
     },
     {
-      "dtc": "P0562",
-      "severity" : "Severe",
-      "meaning": "System Voltage Low",
-      "module": "Vehicle Stability Assist(VSA)",
-      "status": "Current",
+      "dtc": "P0304",
+      "severity" : "Critical",
+      "meaning": "Cylinder 4 Misfire Detected",
+      "module": "Engine",
+      "status": "Pending",
       "descriptions": [
-        "The fault code P0562 indicates that the system voltage in the vehicle is below normal levels, which can cause various electrical system malfunctions and other issues."
+        "The fault code P0304 indicates that there is a misfire detected in the cylinder 4 of the engine. This may result in poor engine performance, reduced fuel efficiency, and increased emissions."
       ],
       "causes": [
-        "Faulty battery or alternator",
-        "Loose or corroded battery or alternator connections",
-        "Electrical system overload",
-        "Failed voltage regulator",
-        "Malfunctioning engine control module (ECM)"
+        "Faulty spark plug in cylinder 4",
+        "Failed ignition coil in cylinder 4",
+        "Low compression in cylinder 4",
+        "Malfunctioning fuel injector in cylinder 4",
+        "Vacuum leak in the intake manifold",
+        "Failed engine control module (ECM)"
       ],
       "solutions": [
-        "Replace the battery or alternator if either is faulty",
-        "Check and repair any damaged or corroded battery or alternator connections",
-        "Reduce electrical system load or upgrade to a higher capacity alternator",
-        "Replace the voltage regulator if necessary",
-        "Replace the engine control module (ECM) if it is malfunctioning"
-      ],
-      "symptoms": [
-        "Illuminated battery warning light on the dashboard",
-        "Difficulty starting the engine or complete failure to start",
-        "Dimming or flickering headlights and interior lights",
-        "Loss of power to electrical components such as power windows or radio",
-        "Reduced fuel economy"
-      ]
-    },
-    {
-      "dtc": "P0300",
-      "severity" : "Low",
-      "meaning": "Random/Multiple Cylinder Misfire Detected",
-      "module": "Vehicle Stability Assist(VSA)",
-      "status": "Current",
-      "descriptions": [
-        "The fault code P0300 indicates that the engine control module (ECM) has detected a random or multiple cylinder misfire. This can occur due to a number of reasons and may cause the engine to run poorly or not start at all."
-      ],
-      "causes": [
-        "Faulty ignition system components (spark plugs, ignition coils, etc.)",
-        "Clogged fuel injectors or fuel filter",
-        "Low fuel pressure",
-        "Vacuum leaks",
-        "Faulty sensors, such as the engine coolant temperature sensor or oxygen sensor",
-        "Mechanical issues, such as low compression or a damaged valve train"
-      ],
-      "solutions": [
-        "Replace any faulty ignition system components (spark plugs, ignition coils, etc.)",
-        "Clean or replace clogged fuel injectors or fuel filter",
-        "Check and repair any leaks in the vacuum system",
-        "Replace any faulty sensors, such as the engine coolant temperature sensor or oxygen sensor",
-        "Perform a compression test to check for mechanical issues",
-        "Replace any damaged or worn components in the valve train"
+        "Replace the spark plug in cylinder 4",
+        "Replace the ignition coil in cylinder 4",
+        "Check and repair any low compression issues in cylinder 4",
+        "Replace the fuel injector in cylinder 4",
+        "Inspect and repair any vacuum leaks in the intake manifold",
+        "Replace the engine control module (ECM) if necessary"
       ],
       "symptoms": [
         "Illuminated check engine light",
-        "Engine runs poorly or not at all",
+        "Rough idle or stalling",
         "Reduced engine power or acceleration",
-        "Rough idle or stalling"
+        "Vibrations or shaking while driving",
+        "Increased fuel consumption",
+        "Increased exhaust emissions"
       ]
     },
     {
-      "dtc": "P0303",
+      "dtc": "P0617",
       "severity" : "High",
-      "meaning": "Cylinder 3 Misfire Detected",
-      "module": "Vehicle Stability Assist(VSA)",
+      "meaning": "Starter Relay Control Circuit High",
+      "module": "Engine",
       "status": "Current",
       "descriptions": [
-        "The fault code P0303 indicates that the Engine Control Module (ECM) detected a misfire in cylinder 3. This misfire can cause damage to the engine and lead to reduced performance."
+        "The fault code P0617 indicates that there is an issue with the starter relay control circuit. This may cause the engine to not start or may result in a no-crank condition."
       ],
       "causes": [
-        "Faulty spark plug in cylinder 3",
-        "Bad ignition coil in cylinder 3",
-        "Clogged or dirty fuel injector in cylinder 3",
-        "Low compression in cylinder 3",
-        "Vacuum leak in cylinder 3",
-        "Faulty Engine Control Module (ECM)"
+        "Faulty starter relay",
+        "Corroded or damaged starter relay wiring",
+        "Failed engine control module (ECM)"
       ],
       "solutions": [
-        "Replace spark plug in cylinder 3",
-        "Replace ignition coil in cylinder 3",
-        "Clean or replace fuel injector in cylinder 3",
-        "Check and repair any issues with compression in cylinder 3",
-        "Check for and repair any vacuum leaks in cylinder 3",
-        "Replace the Engine Control Module (ECM) if necessary"
+        "Replace the starter relay",
+        "Check and repair any damaged or corroded wiring",
+        "Replace the engine control module (ECM) if necessary"
       ],
       "symptoms": [
-        "Engine misfires or runs erratically",
-        "Illuminated check engine light",
-        "Reduced engine power or acceleration",
-        "Rough idle or stalling"
+        "Engine does not start",
+        "No",
+        "crank condition",
+        "Illuminated check engine light"
       ]
+    },
+    {
+      "dtc": "P0616",
+      "severity" : "Low",
+      "meaning": "Starter Relay Circuit Low",
+      "module": "Engine",
+      "status": "Pending",
+      "descriptions": [
+        "The fault code P0616 indicates that there is an issue with the starter relay circuit, and the voltage in the circuit has dropped below a predetermined level."
+      ],
+      "causes": [
+        "Faulty starter relay",
+        "Damaged or broken wiring in the circuit",
+        "Corroded or loose electrical connections",
+        "Failed engine control module (ECM)"
+      ],
+      "solutions": [
+        "Replace the faulty starter relay",
+        "Check and repair any damaged or broken wiring in the circuit",
+        "Clean and tighten any corroded or loose electrical connections",
+        "Replace the engine control module (ECM) if necessary"
+      ],
+      "symptoms": [
+        "Engine won't start or is difficult to start",
+        "Illuminated check engine light",
+        "Clicking sound when turning the key in the ignition",
+        "No power to the starter motor"
+      ]
+    },
+    {
+      "dtc": "P081B",
+      "severity" : "Low",
+      "meaning": "Starter Disable Circuit High",
+      "module": "Engine",
+      "status": "Pending",
+      "descriptions": [
+        "Engine starter switch is shorted or open"
+      ],
+      "causes": [
+        "Faulty ignition switch",
+        "Blown fuse",
+        "Bad batter",
+        "Faulty battery cables",
+        "Open or shorted circuits",
+        "Bad starter relay",
+        "Defective started motor or solenoid"
+      ],
+      "solutions": [
+        "Rewire starter circuit in engine compartment harness"
+      ],
+      "symptoms": [
+        "Check Engine Light/MIL will be on"
+      ]
+    },
+    {
+      "dtc": "P081A",
+      "severity" : "Low",
+      "meaning": "Starter Disable Circuit Low",
+      "module": "Engine",
+      "status": "Pending",
+      "descriptions": [
+        "Engine starter switch is shorted or open"
+      ],
+      "causes": [
+        "Faulty ignition switch",
+        "Blown fuse",
+        "Bad batter",
+        "Faulty battery cables",
+        "Open or shorted circuits",
+        "Bad starter relay",
+        "Defective started motor or solenoid"
+      ],
+      "solutions": [
+        "Rewire starter circuit in engine compartment harness"
+      ],
+      "symptoms": [
+        "Check Engine Light/MIL will be on"
+      ]
+    },
+    {
+      "dtc": "P0602",
+      "severity" : "Low",
+      "meaning": "Control Module Programming Error",
+      "module": "EPS",
+      "status": "Current",
+      "descriptions": [
+        "The fault code P0602 indicates that there is an error in the programming of the engine control module (ECM), which may cause various drivability issues or prevent the engine from starting altogether."
+      ],
+      "causes": [
+        "Corrupted or incorrect programming of the ECM",
+        "Failed ECM hardware",
+        "Electrical problems in the ECM circuit",
+        "Improper installation or reprogramming of the ECM"
+      ],
+      "solutions": [
+        "Reprogram or replace the ECM to correct the programming error",
+        "Check and repair any damaged wiring or connections in the ECM circuit",
+        "Ensure proper installation procedures are followed when replacing or reprogramming the ECM",
+        "Replace the ECM hardware if necessary"
+      ],
+      "symptoms": [
+        "Check engine light illuminates",
+        "Engine may not start",
+        "Various drivability issues such as poor performance, stalling, or rough idling may occur"
+      ]
+    },
+    {
+      "dtc": "U3006",
+      "severity" : "Low",
+      "meaning": "Control module Input Power \" A\" -Circuit voltage below threshold",
+      "module": "Others",
+      "status": "Pending",
+      "descriptions": [
+        "Control module Input Power \" A\" -Circuit voltage below threshold"
+      ],
+      "causes": [],
+      "solutions": [],
+      "symptoms": []
     }
   ],
   "apiSuccess": true,
