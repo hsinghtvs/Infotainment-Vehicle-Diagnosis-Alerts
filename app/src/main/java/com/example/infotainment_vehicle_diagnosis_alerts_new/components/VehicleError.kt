@@ -399,6 +399,7 @@ private fun ErrorBox(
                         viewModel.criticalSeverity = critical
                         viewModel.highSeverity = high
                         viewModel.lowSeverity = low
+                        viewModel.selectedErrorName = moduleName
                         navController.navigate(NavigationItem.ErrorReports.route)
                     },
                     modifier = Modifier

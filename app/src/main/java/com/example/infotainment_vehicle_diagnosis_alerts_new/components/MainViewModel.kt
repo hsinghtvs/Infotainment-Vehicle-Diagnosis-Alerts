@@ -19,6 +19,8 @@ class MainViewModel : ViewModel() {
     var criticalSeverity by mutableStateOf(0)
     var highSeverity by mutableStateOf(0)
     var lowSeverity by mutableStateOf(0)
+    var selectedErrorName by mutableStateOf("")
+    var selectedSeverity by mutableStateOf("")
 
     init {
         setScanningComponents()

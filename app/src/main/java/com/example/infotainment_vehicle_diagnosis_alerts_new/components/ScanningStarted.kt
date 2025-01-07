@@ -277,13 +277,13 @@ fun GradientProgress(
                         rotationY = 360f
                     },
                 onDraw = {
-                    drawArc(
-                        color = Color.LightGray,
-                        startAngle = 0f,
-                        sweepAngle = 360f,
-                        false,
-                        style = Stroke(width = width)
-                    )
+//                    drawArc(
+//                        color = Color.LightGray,
+//                        startAngle = 0f,
+//                        sweepAngle = 360f,
+//                        false,
+//                        style = Stroke(width = width)
+//                    )
                     drawArc(
                         brush = Brush.sweepGradient(colors = colors),
                         startAngle = 0f,
