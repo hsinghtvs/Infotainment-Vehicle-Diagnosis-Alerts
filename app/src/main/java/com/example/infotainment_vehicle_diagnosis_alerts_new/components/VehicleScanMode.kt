@@ -59,7 +59,7 @@ fun VehicleNotInScanMode(navController: NavController, viewModel: MainViewModel)
                     text = "VEHICLE DIGITAL DIAGNOSIS",
                     style = TextStyle(
                         color = Color.White,
-                        fontFamily = FontFamily(Font(R.font.hankengrotesk_extrabold))
+                        fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                     )
                 )
             }

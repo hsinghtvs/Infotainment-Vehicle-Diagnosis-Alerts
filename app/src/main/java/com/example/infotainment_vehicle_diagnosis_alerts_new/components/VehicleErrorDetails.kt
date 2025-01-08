@@ -89,7 +89,7 @@ fun VehicleErrorDetails(navController: NavController, viewModel: MainViewModel) 
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
                     fontSize = 16.sp,
-                    fontFamily = FontFamily(Font(R.font.hankengrotesk_extrabold))
+                    fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                 )
             )
 
@@ -186,11 +186,11 @@ private fun ErrorCounts(
             contentDescription = ""
         )
         Spacer(modifier = Modifier.size(10.dp))
-        Text(text = name, style = TextStyle(color = Color.White, fontSize = 10.sp))
+        Text(text = name, style = TextStyle(color = Color.White, fontSize = 10.sp,fontFamily = FontFamily(Font(R.font.manrope_medium))))
         Spacer(modifier = Modifier.size(10.dp))
         Text(
             text = count.toString(),
-            style = TextStyle(color = Color(0xFF3DED4F), fontSize = 10.sp)
+            style = TextStyle(color = Color(0xFF3DED4F), fontSize = 10.sp,fontFamily = FontFamily(Font(R.font.manrope_bold)))
         )
     }
 
@@ -252,7 +252,7 @@ fun ErrorDescription(
                     style = TextStyle(
                         color = Color.White,
                         fontSize = 12.sp,
-                        fontFamily = FontFamily(Font(R.font.hankengrotesk_extrabold))
+                        fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                     )
                 )
                 Spacer(modifier = Modifier.size(10.dp))
@@ -288,7 +288,7 @@ fun ErrorDescription(
                 style = TextStyle(
                     color = Color.White,
                     fontSize = 10.sp,
-                    fontFamily = FontFamily(Font(R.font.hankengrotesk_medium))
+                    fontFamily = FontFamily(Font(R.font.manrope_semibold))
                 )
             )
         }
@@ -330,7 +330,7 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                     style = TextStyle(
                         color = Color.White,
                         fontSize = 16.sp,
-                        fontFamily = FontFamily(Font(R.font.hankengrotesk_extrabold))
+                        fontFamily = FontFamily(Font(R.font.manrope_semibold))
                     )
                 )
 
@@ -347,7 +347,8 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                 text = "Error Code",
                                 style = TextStyle(
                                     color = Color.White,
-                                    fontSize = 8.sp
+                                    fontSize = 8.sp,
+                                    fontFamily = FontFamily(Font(R.font.manrope_semibold))
                                 )
                             )
                             Text(
@@ -360,7 +361,8 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                         if (jsonObject.get("severity") == "Low") Color(
                                             0xFFCEB91C
                                         ) else Color(0xFFD7602D),
-                                    fontSize = 12.sp
+                                    fontSize = 12.sp,
+                                    fontFamily = FontFamily(Font(R.font.manrope_semibold))
                                 )
                             )
                         }
@@ -415,7 +417,8 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                         color = Color.White,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 10.sp,
-                                        textAlign = TextAlign.Center
+                                        textAlign = TextAlign.Center,
+                                        fontFamily = FontFamily(Font(R.font.manrope_semibold))
                                     )
                                 )
                             }
@@ -453,7 +456,7 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 10.sp,
                                         textAlign = TextAlign.Center,
-                                        fontFamily = FontFamily(Font(R.font.hankengrotesk_medium))
+                                        fontFamily = FontFamily(Font(R.font.manrope_bold))
                                     )
                                 )
                             }
@@ -493,7 +496,7 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                             fontWeight = FontWeight.Bold,
                                             fontSize = 10.sp,
                                             textAlign = TextAlign.Start,
-                                            fontFamily = FontFamily(Font(R.font.hankengrotesk_regular))
+                                            fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                                         )
                                     )
                                     Spacer(modifier = Modifier.weight(0.5f))
@@ -518,7 +521,8 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                         text = AnnotatedString("Book RSA"),
                                         style = TextStyle(
                                             color = Color.White,
-                                            textAlign = TextAlign.Center
+                                            textAlign = TextAlign.Center,
+                                            fontFamily = FontFamily(Font(R.font.manrope_bold))
                                         )
                                     )
                                 }
@@ -532,7 +536,7 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
         item() {
             Text(
                 text = jsonObject.get("descriptions").toString().replace("[","").replace("]",""),
-                style = TextStyle(color = Color.White, fontSize = 8.sp)
+                style = TextStyle(color = Color.White, fontSize = 8.sp,fontFamily = FontFamily(Font(R.font.manrope_regular)))
             )
         }
     }

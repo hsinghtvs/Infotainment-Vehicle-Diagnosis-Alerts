@@ -211,7 +211,7 @@ fun ErrorSection(modifier: Modifier, navController: NavController, viewModel: Ma
                         text = "Scan Components",
                         style = TextStyle(
                             color = Color.White,
-                            fontFamily = FontFamily(Font(R.font.hankengrotesk_extrabold))
+                            fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                         )
                     )
                 }
@@ -247,7 +247,7 @@ fun ErrorSection(modifier: Modifier, navController: NavController, viewModel: Ma
                         text = "ERROR SECTION",
                         style = TextStyle(
                             color = Color.White,
-                            fontFamily = FontFamily(Font(R.font.hankengrotesk_extrabold))
+                            fontFamily = FontFamily(Font(R.font.manrope_semibold))
                         )
                     )
                 }
@@ -309,7 +309,7 @@ private fun ScanningComponentsCompleted(viewModel: MainViewModel, modifier: Modi
                 ) {
                     Text(
                         text = item,
-                        style = TextStyle(color = Color.White, fontSize = 10.sp)
+                        style = TextStyle(color = Color.White, fontSize = 10.sp,fontFamily = FontFamily(Font(R.font.manrope_semibold)))
                     )
                     Spacer(modifier = Modifier.size(5.dp))
                     ShowingErrorCodes(index = index, viewModel = viewModel)
@@ -389,7 +389,7 @@ private fun ErrorBox(
                 Text(
                     modifier = Modifier.weight(2f),
                     text = moduleName,
-                    style = TextStyle(color = Color.White)
+                    style = TextStyle(color = Color.White,fontFamily = FontFamily(Font(R.font.manrope_extrabold)))
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 ClickableText(
@@ -458,11 +458,11 @@ private fun ErrorCounts(
             contentDescription = ""
         )
         Spacer(modifier = Modifier.size(10.dp))
-        Text(text = name, style = TextStyle(color = Color.White, fontSize = 10.sp))
+        Text(text = name, style = TextStyle(color = Color.White, fontSize = 10.sp,fontFamily = FontFamily(Font(R.font.manrope_medium))))
         Spacer(modifier = Modifier.size(10.dp))
         Text(
             text = count.toString(),
-            style = TextStyle(color = Color(0xFF3DED4F), fontSize = 10.sp)
+            style = TextStyle(color = Color(0xFF3DED4F), fontSize = 10.sp,fontFamily = FontFamily(Font(R.font.manrope_bold)))
         )
     }
 

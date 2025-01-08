@@ -61,7 +61,7 @@ fun ScanningNotStarted(modifier: Modifier, viewModel: MainViewModel, navControll
                 text = "Scan Components",
                 style = TextStyle(
                     color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.hankengrotesk_extrabold))
+                    fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                 )
             )
         }
@@ -120,7 +120,7 @@ fun ScanningNotStarted(modifier: Modifier, viewModel: MainViewModel, navControll
                                 text = "Start Full \nScan Now",
                                 style = TextStyle(
                                     color = Color.White,
-                                    fontFamily = FontFamily(Font(R.font.hankengrotesk_extrabold))
+                                    fontFamily = FontFamily(Font(R.font.manrope_bold))
                                 )
                             )
                         }
@@ -155,7 +155,7 @@ private fun ScanningComponents(viewModel: MainViewModel, modifier: Modifier) {
             ) {
                 Text(
                     text = it,
-                    style = TextStyle(color = Color.White)
+                    style = TextStyle(color = Color.White,fontFamily = FontFamily(Font(R.font.manrope_semibold)))
                 )
             }
         }

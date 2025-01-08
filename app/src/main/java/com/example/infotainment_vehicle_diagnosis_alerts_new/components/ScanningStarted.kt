@@ -123,7 +123,7 @@ fun ScanningStarted(modifier: Modifier, viewModel: MainViewModel, navController:
                 text = "Scan Components",
                 style = TextStyle(
                     color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.hankengrotesk_extrabold))
+                    fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                 )
             )
         }
@@ -205,7 +205,7 @@ fun ScanningStarted(modifier: Modifier, viewModel: MainViewModel, navController:
                                 color = Color.White,
                                 textAlign = TextAlign.Center,
                                 fontSize = 8.sp,
-                                fontFamily = FontFamily(Font(R.font.hankengrotesk_extrabold))
+                                fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                             )
                         )
                     }
