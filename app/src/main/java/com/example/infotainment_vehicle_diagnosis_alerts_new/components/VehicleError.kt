@@ -19,7 +19,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.itemsIndexed
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Text
@@ -199,6 +198,15 @@ fun ErrorSection(modifier: Modifier, navController: NavController, viewModel: Ma
                 Color(0xFF090F26)
             )
         )
+
+        var buttonStroke = Brush.linearGradient(
+            listOf(
+                Color(0xFFFFFFFF).copy(alpha = 1f),
+                Color(0xFFFFFFFF).copy(alpha = 0f),
+                Color(0xFFFFFFFF).copy(alpha = 0f),
+                Color(0xFFFFFFFF).copy(alpha = 1f)
+            )
+        )
         if (viewModel.isScanningDone) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -216,9 +224,16 @@ fun ErrorSection(modifier: Modifier, navController: NavController, viewModel: Ma
                     )
                 }
 
+
+
                 Box(
                     modifier = Modifier
                         .padding(vertical = 10.dp)
+                        .background(
+                            color = Color(0xFFFFFFFF).copy(alpha = 0.3f),
+                            shape = RoundedCornerShape(20.dp)
+                        )
+                        .border(1.dp, brush = buttonStroke, shape = RoundedCornerShape(20.dp))
                         .background(
                             brush =
                             nonSelectedGradient,
@@ -229,16 +244,6 @@ fun ErrorSection(modifier: Modifier, navController: NavController, viewModel: Ma
                                 bottomStart = 30.dp
                             )
 
-                        )
-                        .border(
-                            width = 1.dp,
-                            color = Color(0xFF3C4042),
-                            shape = RoundedCornerShape(
-                                topStart = 30.dp,
-                                topEnd = 30.dp,
-                                bottomEnd = 30.dp,
-                                bottomStart = 30.dp
-                            )
                         ),
                     contentAlignment = Alignment.Center
                 ) {
@@ -392,6 +397,14 @@ private fun ErrorBox(
                     style = TextStyle(color = Color.White,fontFamily = FontFamily(Font(R.font.manrope_extrabold)))
                 )
                 Spacer(modifier = Modifier.weight(1f))
+                var buttonStroke = Brush.linearGradient(
+                    listOf(
+                        Color(0xFFFFFFFF).copy(alpha = 1f),
+                        Color(0xFFFFFFFF).copy(alpha = 0f),
+                        Color(0xFFFFFFFF).copy(alpha = 0f),
+                        Color(0xFFFFFFFF).copy(alpha = 1f)
+                    )
+                )
                 ClickableText(
                     onClick = {
                         selectedError = 0
@@ -404,11 +417,15 @@ private fun ErrorBox(
                     },
                     modifier = Modifier
                         .background(
+                            color = Color(0xFFFFFFFF).copy(alpha = 0.3f),
+                            shape = RoundedCornerShape(20.dp)
+                        )
+                        .border(1.dp, brush = buttonStroke, shape = RoundedCornerShape(20.dp))
+                        .background(
                             brush =
                             nonSelectedGradient,
-                            shape = CircleShape
+                            shape = RoundedCornerShape(20.dp)
                         )
-                        .border(1.dp, color = Color.White.copy(alpha = 0.2f), shape = CircleShape)
                         .padding(horizontal = 15.dp, vertical = 5.dp),
                     text = AnnotatedString("View"),
                     style = TextStyle(color = Color.White, textAlign = TextAlign.Center)

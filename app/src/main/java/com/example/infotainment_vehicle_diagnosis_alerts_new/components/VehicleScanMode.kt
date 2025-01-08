@@ -29,20 +29,17 @@ import com.example.infotainment_vehicle_diagnosis_alerts_new.R
 
 @Composable
 fun VehicleNotInScanMode(navController: NavController, viewModel: MainViewModel) {
-
-    val backGroundGradient = Brush.verticalGradient(
+    var backgroundGradient = Brush.linearGradient(
         listOf(
-            Color(0xFF040A1B).copy(alpha = 0.9f),
-            Color(0xFF040A1B).copy(alpha = 1f),
-            Color(0xFF040A1B).copy(alpha = 1f),
-            Color(0xFF040A1B).copy(alpha = 1f)
+            Color(0xFF040F36),
+            Color(0xFF030A29)
         )
     )
 
     Row(
         modifier = Modifier
             .fillMaxSize()
-            .background(brush = backGroundGradient),
+            .background(brush = backgroundGradient),
     ) {
 
         Column (
