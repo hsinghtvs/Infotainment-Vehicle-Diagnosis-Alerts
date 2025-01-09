@@ -4,6 +4,7 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -61,18 +62,15 @@ fun VehicleNotInScanMode(navController: NavController, viewModel: MainViewModel)
                 )
             }
 
-
-            Image(
-                modifier = Modifier
-                    .weight(1f)
-                    .size(
-                        height = 418.dp,
-                        width = 300.dp
-                    ),
-                painter = painterResource(id = R.drawable.car_health),
-                contentDescription = "",
-                contentScale = ContentScale.FillBounds
-            )
+            Box(modifier = Modifier.fillMaxHeight()){
+                Image(
+                    modifier = Modifier
+                        .align(Alignment.Center),
+                    painter = painterResource(id = R.drawable.car_health),
+                    contentDescription = "",
+                    contentScale = ContentScale.FillBounds
+                )
+            }
         }
 
         Spacer(modifier = Modifier.size(10.dp))

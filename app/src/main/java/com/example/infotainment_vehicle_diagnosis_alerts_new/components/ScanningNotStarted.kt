@@ -71,7 +71,7 @@ fun ScanningNotStarted(modifier: Modifier, viewModel: MainViewModel, navControll
             verticalAlignment = Alignment.CenterVertically
         ) {
             ScanningComponents(modifier = Modifier.weight(2f), viewModel = viewModel)
-            Spacer(modifier = Modifier.weight(0.5f))
+            Spacer(modifier = Modifier.weight(0.2f))
             Box(
                 modifier = Modifier
                     .clickable {
@@ -127,6 +127,7 @@ fun ScanningNotStarted(modifier: Modifier, viewModel: MainViewModel, navControll
                     }
                 }
             }
+            Spacer(modifier = Modifier.weight(0.2f))
         }
     }
 }

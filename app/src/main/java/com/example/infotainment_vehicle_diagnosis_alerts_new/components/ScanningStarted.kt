@@ -133,7 +133,7 @@ fun ScanningStarted(modifier: Modifier, viewModel: MainViewModel, navController:
         ) {
 
             ScanningComponentsStarted(modifier = Modifier.weight(2f), viewModel = viewModel)
-            Spacer(modifier = Modifier.weight(0.5f))
+            Spacer(modifier = Modifier.weight(0.2f))
             Box(
                 modifier = Modifier
                     .clickable {
@@ -211,6 +211,7 @@ fun ScanningStarted(modifier: Modifier, viewModel: MainViewModel, navController:
                     }
                 }
             }
+            Spacer(modifier = Modifier.weight(0.2f))
 
         }
     }
@@ -245,7 +246,7 @@ private fun ScanningComponentsStarted(viewModel: MainViewModel, modifier: Modifi
                 ){
                     Text(
                         text = item,
-                        style = TextStyle(color = Color.White)
+                        style = TextStyle(color = Color.White, fontFamily = FontFamily(Font(R.font.manrope_extrabold)))
                     )
                     ShowingErrorCodes(index = index, viewModel = viewModel)
                 }

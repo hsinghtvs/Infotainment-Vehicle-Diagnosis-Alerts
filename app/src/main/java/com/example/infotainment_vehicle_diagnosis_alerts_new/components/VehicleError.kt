@@ -314,7 +314,7 @@ private fun ScanningComponentsCompleted(viewModel: MainViewModel, modifier: Modi
                 ) {
                     Text(
                         text = item,
-                        style = TextStyle(color = Color.White, fontSize = 10.sp,fontFamily = FontFamily(Font(R.font.manrope_semibold)))
+                        style = TextStyle(color = Color.White,fontFamily = FontFamily(Font(R.font.manrope_semibold)))
                     )
                     Spacer(modifier = Modifier.size(5.dp))
                     ShowingErrorCodes(index = index, viewModel = viewModel)
