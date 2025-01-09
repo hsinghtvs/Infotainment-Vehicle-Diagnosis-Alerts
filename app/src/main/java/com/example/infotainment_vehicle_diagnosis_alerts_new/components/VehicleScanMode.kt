@@ -116,6 +116,8 @@ fun VehicleNotInScanMode(navController: NavController, viewModel: MainViewModel)
             viewModel.listOfScanningDone.clear()
         } else if (viewModel.isScanningProgress) {
             viewModel.isScanningProgress = false
+        } else {
+            viewModel.closeApp = true
         }
     }
 }

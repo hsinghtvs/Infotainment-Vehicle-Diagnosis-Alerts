@@ -27,6 +27,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.infotainment_vehicle_diagnosis_alerts_new.R
@@ -155,6 +156,8 @@ private fun ScanningComponents(viewModel: MainViewModel, modifier: Modifier) {
                     .padding(10.dp),
             ) {
                 Text(
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
                     text = it,
                     style = TextStyle(color = Color.White,fontFamily = FontFamily(Font(R.font.manrope_semibold)))
                 )

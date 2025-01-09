@@ -34,6 +34,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -313,11 +314,19 @@ private fun ScanningComponentsCompleted(viewModel: MainViewModel, modifier: Modi
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
+                        modifier = Modifier.weight(2f),
+                        maxLines = 1,
                         text = item,
-                        style = TextStyle(color = Color.White,fontFamily = FontFamily(Font(R.font.manrope_semibold)))
+                        style = TextStyle(
+                            color = Color.White,
+                            fontFamily = FontFamily(Font(R.font.manrope_semibold))
+                        )
                     )
                     Spacer(modifier = Modifier.size(5.dp))
-                    ShowingErrorCodes(index = index, viewModel = viewModel)
+                    ShowingErrorCodes(
+                        modifier = Modifier.weight(1f),
+                        index = index, viewModel = viewModel
+                    )
                 }
             }
         }
@@ -325,8 +334,10 @@ private fun ScanningComponentsCompleted(viewModel: MainViewModel, modifier: Modi
 }
 
 @Composable
-private fun ShowingErrorCodes(viewModel: MainViewModel, index: Int) {
+private fun ShowingErrorCodes(modifier: Modifier, viewModel: MainViewModel, index: Int) {
     Row(
+        modifier = modifier
+
     ) {
         if (index == 0) {
             Image(
@@ -393,8 +404,13 @@ private fun ErrorBox(
             ) {
                 Text(
                     modifier = Modifier.weight(2f),
+                    overflow = TextOverflow.Ellipsis,
+                    maxLines = 1,
                     text = moduleName,
-                    style = TextStyle(color = Color.White,fontFamily = FontFamily(Font(R.font.manrope_extrabold)))
+                    style = TextStyle(
+                        color = Color.White,
+                        fontFamily = FontFamily(Font(R.font.manrope_extrabold))
+                    )
                 )
                 Spacer(modifier = Modifier.weight(1f))
                 var buttonStroke = Brush.linearGradient(
@@ -475,11 +491,26 @@ private fun ErrorCounts(
             contentDescription = ""
         )
         Spacer(modifier = Modifier.size(10.dp))
-        Text(text = name, style = TextStyle(color = Color.White, fontSize = 10.sp,fontFamily = FontFamily(Font(R.font.manrope_medium))))
+        Text(
+            modifier = Modifier.weight(2f),
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            text = name,
+            style = TextStyle(
+                color = Color.White,
+                fontSize = 10.sp,
+                fontFamily = FontFamily(Font(R.font.manrope_medium))
+            )
+        )
         Spacer(modifier = Modifier.size(10.dp))
         Text(
+            modifier = Modifier.weight(0.5f),
             text = count.toString(),
-            style = TextStyle(color = Color(0xFF3DED4F), fontSize = 10.sp,fontFamily = FontFamily(Font(R.font.manrope_bold)))
+            style = TextStyle(
+                color = Color(0xFF3DED4F),
+                fontSize = 10.sp,
+                fontFamily = FontFamily(Font(R.font.manrope_bold))
+            )
         )
     }
 

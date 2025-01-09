@@ -27,12 +27,12 @@ var heightOfImage by mutableIntStateOf(0)
 var isScanning by mutableStateOf(true)
 
 class MainActivity : ComponentActivity() {
+    val viewModel :MainViewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
-            val viewModel :MainViewModel by viewModels<MainViewModel>()
             InfotainmentVehicleDiagnosisAlertsNewTheme {
                 var mainBackGroundGradient = Brush.linearGradient(
                     listOf(
@@ -54,6 +54,13 @@ class MainActivity : ComponentActivity() {
                     AppNavHost(navController = rememberNavController(), viewModel = viewModel)
                 }
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if(viewModel.closeApp) {
+            finish()
         }
     }
 }

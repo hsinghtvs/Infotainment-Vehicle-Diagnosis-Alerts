@@ -242,7 +242,8 @@ fun ErrorDescription(
         Column {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
                     modifier = Modifier.weight(2f),
@@ -366,7 +367,7 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                 )
                             )
                         }
-                        Spacer(modifier = Modifier.weight(2f))
+                        Spacer(modifier = Modifier.weight(0.5f))
                         Box(
                             modifier = modifier
                                 .background(
@@ -409,8 +410,11 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                         contentDescription = ""
                                     )
                                 }
-
+                            
+                                Spacer(modifier = Modifier.weight(0.2f))
                                 Text(
+                                    overflow = TextOverflow.Ellipsis,
+                                    maxLines = 1,
                                     modifier = Modifier.fillMaxWidth(),
                                     text = jsonObject.get("severity").toString(),
                                     style = TextStyle(
@@ -472,6 +476,7 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                     )
                                     Spacer(modifier = Modifier.size(10.dp))
                                     Text(
+                                        overflow = TextOverflow.Ellipsis,
                                         modifier = Modifier.weight(2f),
                                         text = when (jsonObject.get("severity").toString()) {
                                             "Critical" -> {
@@ -507,6 +512,7 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                         maxLines = 1,
                                         overflow = TextOverflow.Ellipsis,
                                         modifier = Modifier
+                                            .weight(1f)
                                             .background(
                                                 brush =
                                                 nonSelectedGradient,

@@ -45,6 +45,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -117,7 +118,7 @@ fun ScanningStarted(modifier: Modifier, viewModel: MainViewModel, navController:
     }
 
     Column {
-        if(!viewModel.isScanningDone){
+        if (!viewModel.isScanningDone) {
             Text(
                 modifier = Modifier.padding(10.dp),
                 text = "Scan Components",
@@ -239,16 +240,27 @@ private fun ScanningComponentsStarted(viewModel: MainViewModel, modifier: Modifi
                     )
                     .padding(10.dp),
             ) {
-                Row (
+                Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
-                ){
+                ) {
                     Text(
+                        modifier = Modifier.weight(2f),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
                         text = item,
-                        style = TextStyle(color = Color.White, fontFamily = FontFamily(Font(R.font.manrope_extrabold)))
+                        style = TextStyle(
+                            color = Color.White,
+                            fontFamily = FontFamily(Font(R.font.manrope_extrabold))
+                        )
                     )
-                    ShowingErrorCodes(index = index, viewModel = viewModel)
+                    Spacer(modifier = Modifier.weight(0.2f))
+                    ShowingErrorCodes(
+                        modifier = Modifier.weight(1f),
+                        index = index,
+                        viewModel = viewModel
+                    )
                 }
             }
         }
@@ -299,16 +311,29 @@ fun GradientProgress(
 }
 
 @Composable
-private fun ShowingErrorCodes(viewModel: MainViewModel, index: Int) {
+private fun ShowingErrorCodes(modifier: Modifier, viewModel: MainViewModel, index: Int) {
     Row(
+        modifier = modifier
     ) {
         if (viewModel.listOfScanningDone.contains(index)) {
-            if(index == 0){
-                Image(modifier = Modifier.size(12.dp),painter = painterResource(id = R.drawable.critical), contentDescription = "")
-            } else if (index == 4){
-                Image(modifier = Modifier.size(12.dp),painter = painterResource(id = R.drawable.low), contentDescription = "")
+            if (index == 0) {
+                Image(
+                    modifier = Modifier.size(12.dp),
+                    painter = painterResource(id = R.drawable.critical),
+                    contentDescription = ""
+                )
+            } else if (index == 4) {
+                Image(
+                    modifier = Modifier.size(12.dp),
+                    painter = painterResource(id = R.drawable.low),
+                    contentDescription = ""
+                )
             } else {
-                Image(modifier = Modifier.size(12.dp),painter = painterResource(id = R.drawable.circle_tick), contentDescription = "")
+                Image(
+                    modifier = Modifier.size(12.dp),
+                    painter = painterResource(id = R.drawable.circle_tick),
+                    contentDescription = ""
+                )
             }
         }
     }
