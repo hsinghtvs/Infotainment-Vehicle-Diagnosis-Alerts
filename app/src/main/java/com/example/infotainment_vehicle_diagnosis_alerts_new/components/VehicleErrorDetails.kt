@@ -181,16 +181,16 @@ private fun ErrorCounts(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
-            modifier = Modifier.size(10.dp),
+            modifier = Modifier.size(15.dp),
             painter = painterResource(id = image),
             contentDescription = ""
         )
         Spacer(modifier = Modifier.size(10.dp))
-        Text(text = name, style = TextStyle(color = Color.White, fontSize = 10.sp,fontFamily = FontFamily(Font(R.font.manrope_medium))))
+        Text(text = name, style = TextStyle(color = Color.White, fontSize = 12.sp,fontFamily = FontFamily(Font(R.font.manrope_medium))))
         Spacer(modifier = Modifier.size(10.dp))
         Text(
             text = count.toString(),
-            style = TextStyle(color = Color(0xFF3DED4F), fontSize = 10.sp,fontFamily = FontFamily(Font(R.font.manrope_bold)))
+            style = TextStyle(color = Color(0xFF3DED4F), fontSize = 12.sp,fontFamily = FontFamily(Font(R.font.manrope_bold)))
         )
     }
 
@@ -248,11 +248,11 @@ fun ErrorDescription(
                 Text(
                     modifier = Modifier.weight(2f),
                     text = meaning,
-                    maxLines = 1,
+                    maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
                     style = TextStyle(
                         color = Color.White,
-                        fontSize = 12.sp,
+                        fontSize = 8.sp,
                         fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                     )
                 )
@@ -288,7 +288,7 @@ fun ErrorDescription(
                 text = dtc,
                 style = TextStyle(
                     color = Color.White,
-                    fontSize = 10.sp,
+                    fontSize = 8.sp,
                     fontFamily = FontFamily(Font(R.font.manrope_semibold))
                 )
             )
@@ -467,7 +467,8 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                             Spacer(modifier = Modifier.size(10.dp))
                             Box(modifier = Modifier) {
                                 Row(
-                                    horizontalArrangement = Arrangement.Start
+                                    horizontalArrangement = Arrangement.Start,
+                                    verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Image(
                                         modifier = Modifier.size(12.dp),
@@ -499,17 +500,17 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                         style = TextStyle(
                                             color = Color(0xFFF37900),
                                             fontWeight = FontWeight.Bold,
-                                            fontSize = 10.sp,
+                                            fontSize = 8.sp,
                                             textAlign = TextAlign.Start,
                                             fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                                         )
                                     )
-                                    Spacer(modifier = Modifier.weight(0.5f))
+                                    Spacer(modifier = Modifier.weight(0.2f))
                                     ClickableText(
                                         onClick = {
 
                                         },
-                                        maxLines = 1,
+                                        maxLines = 2,
                                         overflow = TextOverflow.Ellipsis,
                                         modifier = Modifier
                                             .weight(1f)
@@ -523,9 +524,10 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                                 color = Color.White.copy(alpha = 0.2f),
                                                 shape = CircleShape
                                             )
-                                            .padding(horizontal = 15.dp, vertical = 5.dp),
-                                        text = AnnotatedString("Book RSA"),
+                                            .padding(horizontal = 15.dp, vertical = 2.dp),
+                                        text = AnnotatedString("Request Help"),
                                         style = TextStyle(
+                                            fontSize = 8.sp,
                                             color = Color.White,
                                             textAlign = TextAlign.Center,
                                             fontFamily = FontFamily(Font(R.font.manrope_bold))

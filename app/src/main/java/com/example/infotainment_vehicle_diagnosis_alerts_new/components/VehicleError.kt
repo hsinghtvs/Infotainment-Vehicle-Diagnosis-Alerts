@@ -203,27 +203,27 @@ fun ErrorSection(modifier: Modifier, navController: NavController, viewModel: Ma
         var buttonStroke = Brush.linearGradient(
             listOf(
                 Color(0xFFFFFFFF).copy(alpha = 1f),
-                Color(0xFFFFFFFF).copy(alpha = 0f),
-                Color(0xFFFFFFFF).copy(alpha = 0f),
+                Color(0xFFFFFFFF).copy(alpha = 0.8f),
+                Color(0xFFFFFFFF).copy(alpha = 0.8f),
                 Color(0xFFFFFFFF).copy(alpha = 1f)
             )
         )
         if (viewModel.isScanningDone) {
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
+                horizontalArrangement = Arrangement.End,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if (viewModel.isScanningDone) {
-                    Text(
-                        modifier = Modifier.padding(10.dp),
-                        text = "Scan Components",
-                        style = TextStyle(
-                            color = Color.White,
-                            fontFamily = FontFamily(Font(R.font.manrope_extrabold))
-                        )
-                    )
-                }
+//                if (viewModel.isScanningDone) {
+//                    Text(
+//                        modifier = Modifier.padding(10.dp),
+//                        text = "Scan Components",
+//                        style = TextStyle(
+//                            color = Color.White,
+//                            fontFamily = FontFamily(Font(R.font.manrope_extrabold))
+//                        )
+//                    )
+//                }
 
 
 
@@ -234,7 +234,7 @@ fun ErrorSection(modifier: Modifier, navController: NavController, viewModel: Ma
                             color = Color(0xFFFFFFFF).copy(alpha = 0.3f),
                             shape = RoundedCornerShape(20.dp)
                         )
-                        .border(1.dp, brush = buttonStroke, shape = RoundedCornerShape(20.dp))
+                        .border(1.dp, brush = buttonStroke, shape = RoundedCornerShape(15.dp))
                         .background(
                             brush =
                             nonSelectedGradient,
@@ -261,7 +261,7 @@ fun ErrorSection(modifier: Modifier, navController: NavController, viewModel: Ma
         }
 
         Row() {
-            ScanningComponentsCompleted(modifier = Modifier.weight(2f), viewModel = viewModel)
+//            ScanningComponentsCompleted(modifier = Modifier.weight(2f), viewModel = viewModel)
             Spacer(modifier = Modifier.weight(0.2f))
             ConstraintLayout(
                 modifier = modifier.fillMaxHeight()
@@ -384,7 +384,7 @@ private fun ErrorBox(
     val nonSelectedGradient = Brush.verticalGradient(
         listOf(
             Color(0xFF255AF5),
-            Color(0xFF090F26).copy(alpha = 0f)
+            Color(0xFF090F26)
         )
     )
 
@@ -416,8 +416,8 @@ private fun ErrorBox(
                 var buttonStroke = Brush.linearGradient(
                     listOf(
                         Color(0xFFFFFFFF).copy(alpha = 1f),
-                        Color(0xFFFFFFFF).copy(alpha = 0f),
-                        Color(0xFFFFFFFF).copy(alpha = 0f),
+                        Color(0xFFFFFFFF).copy(alpha = 0.8f),
+                        Color(0xFFFFFFFF).copy(alpha = 0.8f),
                         Color(0xFFFFFFFF).copy(alpha = 1f)
                     )
                 )
@@ -448,7 +448,8 @@ private fun ErrorBox(
                 )
             }
             Row(
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 ErrorCounts(
                     modifier = Modifier.weight(1f),
@@ -483,7 +484,8 @@ private fun ErrorCounts(
 
     Row(
         modifier = modifier.padding(horizontal = 10.dp),
-        verticalAlignment = Alignment.CenterVertically
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
     ) {
         Image(
             modifier = Modifier.size(10.dp),
@@ -492,7 +494,7 @@ private fun ErrorCounts(
         )
         Spacer(modifier = Modifier.size(10.dp))
         Text(
-            modifier = Modifier.weight(2f),
+//            modifier = Modifier.weight(1f),
             maxLines = 1,
             overflow = TextOverflow.Ellipsis,
             text = name,

@@ -27,8 +27,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.infotainment_vehicle_diagnosis_alerts_new.R
 import com.example.infotainment_vehicle_diagnosis_alerts_new.heightOfImage
@@ -56,7 +58,7 @@ fun ScanningNotStarted(modifier: Modifier, viewModel: MainViewModel, navControll
     )
 
     Column {
-        if(!viewModel.isScanningDone){
+        if (!viewModel.isScanningDone) {
             Text(
                 modifier = Modifier.padding(10.dp),
                 text = "Scan Components",
@@ -120,7 +122,8 @@ fun ScanningNotStarted(modifier: Modifier, viewModel: MainViewModel, navControll
                                 modifier = Modifier.padding(10.dp),
                                 text = "Start Full \nScan Now",
                                 style = TextStyle(
-                                    color = Color.White,
+                                    textAlign = TextAlign.Center,
+                                    color = Color.Green,
                                     fontFamily = FontFamily(Font(R.font.manrope_bold))
                                 )
                             )
@@ -159,7 +162,11 @@ private fun ScanningComponents(viewModel: MainViewModel, modifier: Modifier) {
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                     text = it,
-                    style = TextStyle(color = Color.White,fontFamily = FontFamily(Font(R.font.manrope_semibold)))
+                    style = TextStyle(
+                        fontSize = 10.sp,
+                        color = Color.White,
+                        fontFamily = FontFamily(Font(R.font.manrope_semibold))
+                    )
                 )
             }
         }

@@ -76,8 +76,8 @@ fun ScanningStarted(modifier: Modifier, viewModel: MainViewModel, navController:
 
     val outlineCircleGradient = Brush.linearGradient(
         listOf(
-            Color(0xFFFFFFFF).copy(alpha = 0.2f),
-            Color(0xFF1FA4F2).copy(alpha = 1f)
+            Color(0xFFEFAF24).copy(alpha = 0.2f),
+            Color(0xFFEFAF24).copy(alpha = 1f)
         )
     )
 
@@ -85,6 +85,13 @@ fun ScanningStarted(modifier: Modifier, viewModel: MainViewModel, navController:
         listOf(
             Color(0xFF1D3A8C),
             Color(0xFF051C5D)
+        )
+    )
+
+    val finishedScanning = Brush.linearGradient(
+        listOf(
+            Color(0xFF3DED4F).copy(alpha = 0.7f),
+            Color(0xFF3DED4F).copy(alpha = 0.7f)
         )
     )
     var currentTime by remember { mutableLongStateOf(0) } // 10 for example
@@ -174,11 +181,8 @@ fun ScanningStarted(modifier: Modifier, viewModel: MainViewModel, navController:
                             shape = CircleShape
                         ),
                     colors = listOf(
-                        Color(0xFF0B1E52),
-                        Color(0xFF295ACB),
-                        Color(0xFF295AC9),
-                        Color(0xFF2557B5),
-                        Color(0xFF34B2CB)
+                        Color(0xFFEFAF24),
+                        Color(0xFFEFAF24)
                     )
                 )
                 Box(
@@ -186,7 +190,13 @@ fun ScanningStarted(modifier: Modifier, viewModel: MainViewModel, navController:
                         .align(Alignment.Center)
                         .size((heightOfImage / 6).toInt().dp)
                         .clip(CircleShape)
-                        .background(brush = glassFrontGradient)
+                        .background(
+                            brush = if (progressCompleted) {
+                                finishedScanning
+                            } else {
+                                glassFrontGradient
+                            }
+                        )
                         .padding(5.dp),
                     contentAlignment = Alignment.Center
                 ) {
@@ -251,13 +261,14 @@ private fun ScanningComponentsStarted(viewModel: MainViewModel, modifier: Modifi
                         overflow = TextOverflow.Ellipsis,
                         text = item,
                         style = TextStyle(
+                            fontSize = 10.sp,
                             color = Color.White,
                             fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                         )
                     )
                     Spacer(modifier = Modifier.weight(0.2f))
                     ShowingErrorCodes(
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier.weight(0.5f),
                         index = index,
                         viewModel = viewModel
                     )
