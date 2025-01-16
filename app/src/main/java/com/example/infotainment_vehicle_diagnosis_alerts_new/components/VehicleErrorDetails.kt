@@ -1,5 +1,7 @@
 package com.example.infotainment_vehicle_diagnosis_alerts_new.components
 
+import android.content.ComponentName
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -88,25 +90,25 @@ fun VehicleErrorDetails(navController: NavController, viewModel: MainViewModel) 
                 style = TextStyle(
                     color = Color.White,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp,
+                    fontSize = 18.sp,
                     fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                 )
             )
 
             ErrorCounts(
-                modifier = Modifier.padding(10.dp),
+                modifier = Modifier.padding(15.dp),
                 image = R.drawable.critical,
                 name = "Critical",
                 count = viewModel.criticalSeverity
             )
             ErrorCounts(
-                modifier = Modifier.padding(10.dp),
+                modifier = Modifier.padding(15.dp),
                 image = R.drawable.high,
                 name = "High",
                 count = viewModel.highSeverity
             )
             ErrorCounts(
-                modifier = Modifier.padding(10.dp),
+                modifier = Modifier.padding(15F.dp),
                 image = R.drawable.low,
                 name = "Low",
                 count = viewModel.lowSeverity
@@ -117,17 +119,43 @@ fun VehicleErrorDetails(navController: NavController, viewModel: MainViewModel) 
         Row {
             Column(
                 modifier = Modifier
-                    .weight(1f)
+                    .weight(0.7f)
                     .fillMaxHeight()
                     .fillMaxWidth(),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Image(
-                    modifier = Modifier.size(150.dp),
-                    painter = painterResource(id = R.drawable.engine),
-                    contentDescription = ""
-                )
+                if(viewModel.selectedErrorName == "Engine"){
+                    Image(
+                        modifier = Modifier.size(150.dp),
+                        painter = painterResource(id = R.drawable.engine__new),
+                        contentDescription = ""
+                    )
+                } else  if(viewModel.selectedErrorName == "ABS"){
+                    Image(
+                        modifier = Modifier.size(150.dp),
+                        painter = painterResource(id = R.drawable.abs),
+                        contentDescription = ""
+                    )
+                } else  if(viewModel.selectedErrorName == "EPS"){
+                    Image(
+                        modifier = Modifier.size(150.dp),
+                        painter = painterResource(id = R.drawable.steering),
+                        contentDescription = ""
+                    )
+                } else  if(viewModel.selectedErrorName == "Brake"){
+                    Image(
+                        modifier = Modifier.size(150.dp),
+                        painter = painterResource(id = R.drawable.brakes),
+                        contentDescription = ""
+                    )
+                }  else  if(viewModel.selectedErrorName == "Air Bag"){
+                    Image(
+                        modifier = Modifier.size(150.dp),
+                        painter = painterResource(id = R.drawable.airbag),
+                        contentDescription = ""
+                    )
+                }
                 Spacer(
                     modifier = Modifier
                         .height(20.dp)
@@ -181,16 +209,27 @@ private fun ErrorCounts(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Image(
-            modifier = Modifier.size(15.dp),
+            modifier = Modifier.size(20.dp),
             painter = painterResource(id = image),
             contentDescription = ""
         )
         Spacer(modifier = Modifier.size(10.dp))
-        Text(text = name, style = TextStyle(color = Color.White, fontSize = 12.sp,fontFamily = FontFamily(Font(R.font.manrope_medium))))
+        Text(
+            text = name,
+            style = TextStyle(
+                color = Color.White,
+                fontSize = 14.sp,
+                fontFamily = FontFamily(Font(R.font.manrope_medium))
+            )
+        )
         Spacer(modifier = Modifier.size(10.dp))
         Text(
             text = count.toString(),
-            style = TextStyle(color = Color(0xFF3DED4F), fontSize = 12.sp,fontFamily = FontFamily(Font(R.font.manrope_bold)))
+            style = TextStyle(
+                color = Color(0xFF3DED4F),
+                fontSize = 14.sp,
+                fontFamily = FontFamily(Font(R.font.manrope_bold))
+            )
         )
     }
 
@@ -252,35 +291,11 @@ fun ErrorDescription(
                     overflow = TextOverflow.Ellipsis,
                     style = TextStyle(
                         color = Color.White,
-                        fontSize = 8.sp,
+                        fontSize = 14.sp,
                         fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                     )
                 )
                 Spacer(modifier = Modifier.size(10.dp))
-                if (listOfFaults.get(errorIndex).getJSONObject(name).get("severity")
-                        .toString() == "Critical"
-                ) {
-                    Image(
-                        modifier = Modifier
-                            .size(12.dp),
-                        painter = painterResource(id = R.drawable.critical),
-                        contentDescription = ""
-                    )
-                } else if (listOfFaults.get(errorIndex).getJSONObject(name).get("severity")
-                        .toString() == "High"
-                ) {
-                    Image(
-                        modifier = Modifier.size(12.dp),
-                        painter = painterResource(id = R.drawable.high),
-                        contentDescription = ""
-                    )
-                } else {
-                    Image(
-                        modifier = Modifier.size(12.dp),
-                        painter = painterResource(id = R.drawable.low),
-                        contentDescription = ""
-                    )
-                }
 
             }
             Spacer(modifier = Modifier.size(10.dp))
@@ -288,9 +303,32 @@ fun ErrorDescription(
                 text = dtc,
                 style = TextStyle(
                     color = Color.White,
-                    fontSize = 8.sp,
-                    fontFamily = FontFamily(Font(R.font.manrope_semibold))
+                    fontSize = 14.sp,
+                    fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                 )
+            )
+        }
+        if (listOfFaults.get(errorIndex).getJSONObject(name).get("severity")
+                .toString() == "Critical"
+        ) {
+            Image(
+                modifier = Modifier.align(Alignment.CenterEnd).size(20.dp),
+                painter = painterResource(id = R.drawable.critical),
+                contentDescription = ""
+            )
+        } else if (listOfFaults.get(errorIndex).getJSONObject(name).get("severity")
+                .toString() == "High"
+        ) {
+            Image(
+                modifier = Modifier.align(Alignment.CenterEnd).size(20.dp),
+                painter = painterResource(id = R.drawable.high),
+                contentDescription = ""
+            )
+        } else {
+            Image(
+                modifier = Modifier.align(Alignment.CenterEnd).size(20.dp),
+                painter = painterResource(id = R.drawable.low),
+                contentDescription = ""
             )
         }
     }
@@ -307,6 +345,8 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
     for (i in 0 until jsonObject.getJSONArray("solutions").length()) {
         listOfSolutions.add(jsonObject.getJSONArray("solutions").get(i).toString())
     }
+
+    val context = LocalContext.current
 
     val backgroundGradient = Brush.verticalGradient(
         listOf(
@@ -327,7 +367,7 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
             Column(modifier = Modifier) {
                 Text(
                     modifier = Modifier,
-                    text = "Engine Errors",
+                    text = "${viewModel.selectedErrorName} Errors",
                     style = TextStyle(
                         color = Color.White,
                         fontSize = 16.sp,
@@ -348,7 +388,7 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                 text = "Error Code",
                                 style = TextStyle(
                                     color = Color.White,
-                                    fontSize = 8.sp,
+                                    fontSize = 14.sp,
                                     fontFamily = FontFamily(Font(R.font.manrope_semibold))
                                 )
                             )
@@ -362,8 +402,8 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                         if (jsonObject.get("severity") == "Low") Color(
                                             0xFFCEB91C
                                         ) else Color(0xFFD7602D),
-                                    fontSize = 12.sp,
-                                    fontFamily = FontFamily(Font(R.font.manrope_semibold))
+                                    fontSize = 14.sp,
+                                    fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                                 )
                             )
                         }
@@ -386,31 +426,31 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                 horizontalArrangement = Arrangement.SpaceBetween,
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                if (jsonObject
-                                        .get("severity")
-                                        .toString() == "Critical"
-                                ) {
-                                    Image(
-                                        modifier = Modifier
-                                            .size(12.dp),
-                                        painter = painterResource(id = R.drawable.critical),
-                                        contentDescription = ""
-                                    )
-                                } else if (jsonObject.get("severity") == "Low"
-                                ) {
-                                    Image(
-                                        modifier = Modifier.size(12.dp),
-                                        painter = painterResource(id = R.drawable.low),
-                                        contentDescription = ""
-                                    )
-                                } else {
-                                    Image(
-                                        modifier = Modifier.size(12.dp),
-                                        painter = painterResource(id = R.drawable.high),
-                                        contentDescription = ""
-                                    )
-                                }
-                            
+//                                if (jsonObject
+//                                        .get("severity")
+//                                        .toString() == "Critical"
+//                                ) {
+//                                    Image(
+//                                        modifier = Modifier
+//                                            .size(15.dp),
+//                                        painter = painterResource(id = R.drawable.critical),
+//                                        contentDescription = ""
+//                                    )
+//                                } else if (jsonObject.get("severity") == "Low"
+//                                ) {
+//                                    Image(
+//                                        modifier = Modifier.size(15.dp),
+//                                        painter = painterResource(id = R.drawable.low),
+//                                        contentDescription = ""
+//                                    )
+//                                } else {
+//                                    Image(
+//                                        modifier = Modifier.size(15.dp),
+//                                        painter = painterResource(id = R.drawable.high),
+//                                        contentDescription = ""
+//                                    )
+//                                }
+
                                 Spacer(modifier = Modifier.weight(0.2f))
                                 Text(
                                     overflow = TextOverflow.Ellipsis,
@@ -420,9 +460,9 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                     style = TextStyle(
                                         color = Color.White,
                                         fontWeight = FontWeight.Bold,
-                                        fontSize = 10.sp,
+                                        fontSize = 14.sp,
                                         textAlign = TextAlign.Center,
-                                        fontFamily = FontFamily(Font(R.font.manrope_semibold))
+                                        fontFamily = FontFamily(Font(R.font.manrope_bold))
                                     )
                                 )
                             }
@@ -458,7 +498,7 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                     style = TextStyle(
                                         color = Color.White,
                                         fontWeight = FontWeight.Bold,
-                                        fontSize = 10.sp,
+                                        fontSize = 14.sp,
                                         textAlign = TextAlign.Center,
                                         fontFamily = FontFamily(Font(R.font.manrope_bold))
                                     )
@@ -471,7 +511,7 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Image(
-                                        modifier = Modifier.size(12.dp),
+                                        modifier = Modifier.size(20.dp),
                                         painter = painterResource(id = R.drawable.info),
                                         contentDescription = "Information"
                                     )
@@ -481,7 +521,7 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                         modifier = Modifier.weight(2f),
                                         text = when (jsonObject.get("severity").toString()) {
                                             "Critical" -> {
-                                                "Please contact service centre immediately or Book RSA"
+                                                "Please contact service centre immediately or Request Help"
                                             }
 
                                             "High" -> {
@@ -496,43 +536,93 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
                                                 "Nothing to worry"
                                             }
                                         },
-                                        maxLines = 3,
+                                        maxLines = 5,
                                         style = TextStyle(
                                             color = Color(0xFFF37900),
                                             fontWeight = FontWeight.Bold,
-                                            fontSize = 8.sp,
+                                            fontSize = 12.sp,
                                             textAlign = TextAlign.Start,
                                             fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                                         )
                                     )
                                     Spacer(modifier = Modifier.weight(0.2f))
-                                    ClickableText(
-                                        onClick = {
+                                    if(jsonObject.get("severity").toString() == "Critical" || jsonObject.get("severity").toString() == "High" ) {
+                                        ClickableText(
+                                            onClick = {
+                                                when (jsonObject.get("severity").toString()) {
+                                                    "Critical" -> {
+                                                        val intent = Intent(Intent.ACTION_MAIN)
+                                                        intent.action = Intent.ACTION_SEND
+                                                        intent.component =
+                                                            ComponentName(
+                                                                "com.example.infotainment_rsa",
+                                                                "com.example.infotainment_rsa.MainActivity"
+                                                            )
+                                                        intent.putExtra(
+                                                            "service",
+                                                            jsonObject.get("module").toString()
+                                                        )
+                                                        intent.type = "text/plain"
+                                                        context.startActivity(intent)
+                                                    }
 
-                                        },
-                                        maxLines = 2,
-                                        overflow = TextOverflow.Ellipsis,
-                                        modifier = Modifier
-                                            .weight(1f)
-                                            .background(
-                                                brush =
-                                                nonSelectedGradient,
-                                                shape = CircleShape
+                                                    "High" -> {
+                                                        val intent = Intent(Intent.ACTION_MAIN)
+                                                        intent.action = Intent.ACTION_SEND
+                                                        intent.component =
+                                                            ComponentName(
+                                                                "com.example.infotainment_car_health_digital",
+                                                                "com.example.infotainment_car_health_digital.MainActivity"
+                                                            )
+                                                        intent.putExtra(
+                                                            "Book Service",
+                                                            jsonObject.get("meaning").toString()
+                                                        )
+                                                        intent.type = "text/plain"
+                                                        context.startActivity(intent)
+                                                    }
+
+                                                    else -> {
+                                                        AnnotatedString("Request Help")
+                                                    }
+                                                }
+                                            },
+                                            maxLines = 2,
+                                            overflow = TextOverflow.Ellipsis,
+                                            modifier = Modifier
+                                                .weight(1.1f)
+                                                .background(
+                                                    brush =
+                                                    nonSelectedGradient,
+                                                    shape = CircleShape
+                                                )
+                                                .border(
+                                                    1.dp,
+                                                    color = Color.White.copy(alpha = 0.2f),
+                                                    shape = CircleShape
+                                                )
+                                                .padding(horizontal = 15.dp, vertical = 2.dp),
+                                            text = when (jsonObject.get("severity").toString()) {
+                                                "Critical" -> {
+                                                    AnnotatedString("Request Help")
+                                                }
+
+                                                "High" -> {
+                                                    AnnotatedString("Book Service")
+                                                }
+
+                                                else -> {
+                                                    AnnotatedString("Request Help")
+                                                }
+                                            },
+                                            style = TextStyle(
+                                                fontSize = 11.sp,
+                                                color = Color.White,
+                                                textAlign = TextAlign.Center,
+                                                fontFamily = FontFamily(Font(R.font.manrope_bold))
                                             )
-                                            .border(
-                                                1.dp,
-                                                color = Color.White.copy(alpha = 0.2f),
-                                                shape = CircleShape
-                                            )
-                                            .padding(horizontal = 15.dp, vertical = 2.dp),
-                                        text = AnnotatedString("Request Help"),
-                                        style = TextStyle(
-                                            fontSize = 8.sp,
-                                            color = Color.White,
-                                            textAlign = TextAlign.Center,
-                                            fontFamily = FontFamily(Font(R.font.manrope_bold))
                                         )
-                                    )
+                                    }
                                 }
                             }
                         }
@@ -543,8 +633,12 @@ fun ErrorDetails(modifier: Modifier, jsonObject: JSONObject, viewModel: MainView
         }
         item() {
             Text(
-                text = jsonObject.get("descriptions").toString().replace("[","").replace("]",""),
-                style = TextStyle(color = Color.White, fontSize = 8.sp,fontFamily = FontFamily(Font(R.font.manrope_regular)))
+                text = jsonObject.get("descriptions").toString().replace("[", "").replace("]", ""),
+                style = TextStyle(
+                    color = Color.White,
+                    fontSize = 12.sp,
+                    fontFamily = FontFamily(Font(R.font.manrope_regular))
+                )
             )
         }
     }
@@ -555,7 +649,7 @@ fun jSONObjectFromPrevious(): String? {
     val context = LocalContext.current
     var json: String? = null
     json = try {
-        val `is`: InputStream = context.getAssets().open("faults.json")
+        val `is`: InputStream = context.getAssets().open("faultsEven.json")
         val size = `is`.available()
         val buffer = ByteArray(size)
         `is`.read(buffer)

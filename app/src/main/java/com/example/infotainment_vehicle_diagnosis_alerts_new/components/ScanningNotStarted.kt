@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
@@ -58,28 +59,35 @@ fun ScanningNotStarted(modifier: Modifier, viewModel: MainViewModel, navControll
     )
 
     Column {
-        if (!viewModel.isScanningDone) {
-            Text(
-                modifier = Modifier.padding(10.dp),
-                text = "Scan Components",
-                style = TextStyle(
-                    color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.manrope_extrabold))
-                )
-            )
-        }
+//        if (!viewModel.isScanningDone) {
+//            Text(
+//                modifier = Modifier.padding(10.dp),
+//                text = "Scan Components",
+//                style = TextStyle(
+//                    color = Color.White,
+//                    fontFamily = FontFamily(Font(R.font.manrope_extrabold))
+//                )
+//            )
+//        }
 
         Row(
             modifier = modifier,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            ScanningComponents(modifier = Modifier.weight(2f), viewModel = viewModel)
+            ScanningComponents(
+                modifier = Modifier
+                    .weight(2f)
+                    .fillMaxHeight()
+                    .align(Alignment.CenterVertically),
+                viewModel = viewModel
+            )
             Spacer(modifier = Modifier.weight(0.2f))
             Box(
                 modifier = Modifier
                     .clickable {
                         viewModel.listOfScanningDone.clear()
                         viewModel.isScanningProgress = true
+                        viewModel.scannedCount++
                     }
                     .size((heightOfImage / 3).toInt().dp)
                     .clip(CircleShape)
@@ -113,14 +121,13 @@ fun ScanningNotStarted(modifier: Modifier, viewModel: MainViewModel, navControll
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             Image(
-                                modifier = Modifier.size((heightOfImage / 40).dp),
+                                modifier = Modifier.size((heightOfImage / 18).dp),
                                 painter = painterResource(id = R.drawable.scan),
                                 contentDescription = ""
                             )
-                            Spacer(modifier = Modifier.size(10.dp))
                             Text(
                                 modifier = Modifier.padding(10.dp),
-                                text = "Start Full \nScan Now",
+                                text = "Start Full \nScan ",
                                 style = TextStyle(
                                     textAlign = TextAlign.Center,
                                     color = Color.Green,
@@ -144,30 +151,43 @@ private fun ScanningComponents(viewModel: MainViewModel, modifier: Modifier) {
             Color(0xFF76ADFF).copy(alpha = 0.2f)
         )
     )
-    LazyVerticalStaggeredGrid(modifier = modifier, columns = StaggeredGridCells.Fixed(2)) {
-        items(viewModel.scanningComponents) {
-            Box(
-                modifier = Modifier
-                    .padding(horizontal = 5.dp, vertical = 5.dp)
-                    .clickable {
+    Column(
+        modifier = modifier.fillMaxHeight(),
+        verticalArrangement = Arrangement.Center,
+    ) {
+        Text(
+            modifier = Modifier.padding(10.dp),
+            text = "Components to be Scanned",
+            style = TextStyle(
+                color = Color.White,
+                fontFamily = FontFamily(Font(R.font.manrope_extrabold))
+            )
+        )
+        LazyVerticalStaggeredGrid(modifier = Modifier, columns = StaggeredGridCells.Fixed(1)) {
+            items(viewModel.scanningComponents) {
+                Box(
+                    modifier = Modifier
+                        .padding(horizontal = 5.dp, vertical = 5.dp)
+                        .clickable {
 
-                    }
-                    .background(
-                        brush = backGroundGradient,
-                        shape = RoundedCornerShape(size = 8.dp)
+                        }
+                        .background(
+                            brush = backGroundGradient,
+                            shape = RoundedCornerShape(size = 8.dp)
+                        )
+                        .padding(10.dp),
+                ) {
+                    Text(
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        text = it,
+                        style = TextStyle(
+                            fontSize = 14.sp,
+                            color = Color.White,
+                            fontFamily = FontFamily(Font(R.font.manrope_extrabold))
+                        )
                     )
-                    .padding(10.dp),
-            ) {
-                Text(
-                    maxLines = 1,
-                    overflow = TextOverflow.Ellipsis,
-                    text = it,
-                    style = TextStyle(
-                        fontSize = 10.sp,
-                        color = Color.White,
-                        fontFamily = FontFamily(Font(R.font.manrope_semibold))
-                    )
-                )
+                }
             }
         }
     }

@@ -22,6 +22,7 @@ class MainViewModel : ViewModel() {
     var selectedErrorName by mutableStateOf("")
     var selectedSeverity by mutableStateOf("")
     var closeApp by mutableStateOf(false)
+    var scannedCount by mutableStateOf(0)
 
     init {
         setScanningComponents()
@@ -30,12 +31,9 @@ class MainViewModel : ViewModel() {
     private fun setScanningComponents() {
         scanningComponents.add("Engine")
         scanningComponents.add("Transmission")
-        scanningComponents.add("ADM")
-        scanningComponents.add("ABS")
-        scanningComponents.add("EPS")
-        scanningComponents.add("BCM")
-        scanningComponents.add("Smart Key ")
-        scanningComponents.add("CNG")
+        scanningComponents.add("Braking System")
+        scanningComponents.add("Electronic Steering")
+        scanningComponents.add("Body Control")
         scanningComponents.add("Instrument Cluster")
         scanningComponents.add("Airbag")
     }

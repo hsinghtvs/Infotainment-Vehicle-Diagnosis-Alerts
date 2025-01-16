@@ -1,0 +1,219 @@
+{
+  "license_plate": "TN02BD0498",
+  "report_url": "https://carpminspectionreports.s3.amazonaws.com/mechanic/reports/reports/004/996/546/original/_TN02BD0498_1736226990.pdf?1736226995",
+  "car_company": "Tata",
+  "status": 1,
+  "time": "2025-01-07T10:46:35.159+05:30",
+  "mechanic_name": null,
+  "mechanic_email": "8122550376@tvs.in",
+  "vin": "MAT608071FPE23613",
+  "scan_ended": "automatic_success",
+  "faulty_modules": [
+    "Engine",
+    "ABS",
+    "BCM",
+    "EPS",
+    "Instrument Cluster",
+    "Others"
+  ],
+  "non_faulty_modules": [
+    "Airbag",
+    "Transmission",
+    "HVAC",
+    "Parking Assist",
+    "Infotainment"
+  ],
+  "code_details": [
+    {
+      "dtc": "P0335",
+      "severity" : "High",
+      "meaning": "Crankshaft Position “A” Circuit Malfunction.",
+      "module": "Engine",
+      "status": "Pending",
+      "descriptions": [
+        "The fault code P0335 indicates that there is an issue with the Crankshaft Position “A” Circuit Malfunction."
+      ],
+      "causes": [
+        "Faulty oxygen sensor",
+        "Damaged wiring or connections in the circuit",
+        "Corroded or loose electrical connections",
+        "Failed engine control module (ECM)"
+      ],
+      "solutions": [
+        "Replace the oxygen sensor",
+        "Check and repair any damaged wiring or connections",
+        "Tighten or clean any loose or corroded electrical connections",
+        "Replace the engine control module (ECM) if necessary"
+      ],
+      "symptoms": [
+        "Illuminated check engine light",
+        "Poor engine performance",
+        "Increased emissions"
+      ]
+    },
+    {
+      "dtc": "P0130",
+      "severity" : "Low",
+      "meaning": "O2 Sensor Circuit (Bank 1, Sensor 1)",
+      "module": "Engine",
+      "status": "Pending",
+      "descriptions": [
+        "The fault code P0130 indicates that there is an issue with the O2 Sensor Circuit (Bank 1, Sensor 1)."
+      ],
+      "causes": [
+        "Failed wastegate solenoid",
+        "Faulty wiring or connections in the circuit",
+        "Corrosion or damage to electrical connections",
+        "Failed engine control module (ECM)"
+      ],
+      "solutions": [
+        "Replace the wastegate solenoid",
+        "Check and repair any damaged wiring or connections",
+        "Clean or replace corroded electrical connections",
+        "Replace the engine control module (ECM) if necessary"
+      ],
+      "symptoms": [
+        "Decreased engine performance",
+        "Reduced fuel efficiency",
+        "Illuminated check engine light"
+      ]
+    },
+    {
+      "dtc": "U0121",
+      "severity" : "High",
+      "meaning": "Lost Communication With Anti-Lock Braking System (ABS) Module",
+      "module": "Brake",
+      "status": "Pending",
+      "descriptions": [
+        "The fault code U0121 indicates that there is an issue Lost Communication With Anti-Lock Braking System (ABS) Module."
+      ],
+      "causes": [
+        "Failed wastegate solenoid",
+        "Faulty wiring or connections in the circuit",
+        "Corrosion or damage to electrical connections",
+        "Failed engine control module (ECM)"
+      ],
+      "solutions": [
+        "Replace the wastegate solenoid",
+        "Check and repair any damaged wiring or connections",
+        "Clean or replace corroded electrical connections",
+        "Replace the engine control module (ECM) if necessary"
+      ],
+      "symptoms": [
+        "Decreased engine performance",
+        "Reduced fuel efficiency",
+        "Illuminated check engine light"
+      ]
+    },
+    {
+      "dtc": "B1762",
+      "severity" : "Low",
+      "meaning": "ACU Coding Error",
+      "module": "Air Bag",
+      "status": "Pending",
+      "descriptions": [
+        "The fault code B1762 indicates that there is an issue ACU Coding Error"
+      ],
+      "causes": [
+        "Failed wastegate solenoid",
+        "Faulty wiring or connections in the circuit",
+        "Corrosion or damage to electrical connections",
+        "Failed engine control module (ECM)"
+      ],
+      "solutions": [
+        "Replace the wastegate solenoid",
+        "Check and repair any damaged wiring or connections",
+        "Clean or replace corroded electrical connections",
+        "Replace the engine control module (ECM) if necessary"
+      ],
+      "symptoms": [
+        "Decreased engine performance",
+        "Reduced fuel efficiency",
+        "Illuminated check engine light"
+      ]
+    },
+    {
+      "dtc": "P0304",
+      "severity" : "Critical",
+      "meaning": "Cylinder 4 Misfire Detected",
+      "module": "Engine",
+      "status": "Pending",
+      "descriptions": [
+        "The fault code P0304 indicates that there is an issue with the Cylinder 4 Misfire Detected"
+      ],
+      "causes": [
+        "Failed wastegate solenoid",
+        "Faulty wiring or connections in the circuit",
+        "Corrosion or damage to electrical connections",
+        "Failed engine control module (ECM)"
+      ],
+      "solutions": [
+        "Replace the wastegate solenoid",
+        "Check and repair any damaged wiring or connections",
+        "Clean or replace corroded electrical connections",
+        "Replace the engine control module (ECM) if necessary"
+      ],
+      "symptoms": [
+        "Decreased engine performance",
+        "Reduced fuel efficiency",
+        "Illuminated check engine light"
+      ]
+    },
+    {
+      "dtc": "P0100",
+      "severity" : "High",
+      "meaning": "Mass or Volume Air Flow “A” Circuit",
+      "module": "Engine",
+      "status": "Pending",
+      "descriptions": [
+        "The fault code P0100 indicates that there is an issue with the Mass or Volume Air Flow “A” Circuit"
+      ],
+      "causes": [
+        "Failed wastegate solenoid",
+        "Faulty wiring or connections in the circuit",
+        "Corrosion or damage to electrical connections",
+        "Failed engine control module (ECM)"
+      ],
+      "solutions": [
+        "Replace the wastegate solenoid",
+        "Check and repair any damaged wiring or connections",
+        "Clean or replace corroded electrical connections",
+        "Replace the engine control module (ECM) if necessary"
+      ],
+      "symptoms": [
+        "Decreased engine performance",
+        "Reduced fuel efficiency",
+        "Illuminated check engine light"
+      ]
+    },
+    {
+      "dtc": "C1511",
+      "severity" : "Low",
+      "meaning": "Torque Sensor 1 Malfunction",
+      "module": "EPS",
+      "status": "Current",
+      "descriptions": [
+        "The fault code C1511 indicates that there is an error in the Torque Sensor 1 Malfunction"
+      ],
+      "causes": [
+        "Corrupted or incorrect programming of the ECM",
+        "Failed ECM hardware",
+        "Electrical problems in the ECM circuit",
+        "Improper installation or reprogramming of the ECM"
+      ],
+      "solutions": [
+        "Reprogram or replace the ECM to correct the programming error",
+        "Check and repair any damaged wiring or connections in the ECM circuit",
+        "Ensure proper installation procedures are followed when replacing or reprogramming the ECM",
+        "Replace the ECM hardware if necessary"
+      ],
+      "symptoms": [
+        "Check engine light illuminates",
+        "Engine may not start",
+        "Various drivability issues such as poor performance, stalling, or rough idling may occur"
+      ]
+    }
+  ],
+  "apiSuccess": true,
+  "httpcode": 200
+}

@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -90,8 +91,8 @@ fun ScanningStarted(modifier: Modifier, viewModel: MainViewModel, navController:
 
     val finishedScanning = Brush.linearGradient(
         listOf(
-            Color(0xFF3DED4F).copy(alpha = 0.7f),
-            Color(0xFF3DED4F).copy(alpha = 0.7f)
+            Color(17,183,34).copy(alpha = 0.8f),
+            Color(17,183,34).copy(alpha = 0.8f)
         )
     )
     var currentTime by remember { mutableLongStateOf(0) } // 10 for example
@@ -125,22 +126,31 @@ fun ScanningStarted(modifier: Modifier, viewModel: MainViewModel, navController:
     }
 
     Column {
-        if (!viewModel.isScanningDone) {
-            Text(
-                modifier = Modifier.padding(10.dp),
-                text = "Scan Components",
-                style = TextStyle(
-                    color = Color.White,
-                    fontFamily = FontFamily(Font(R.font.manrope_extrabold))
-                )
-            )
-        }
+//        if (!viewModel.isScanningDone) {
+//            Text(
+//                modifier = Modifier.padding(10.dp),
+//                text = "Scan Components",
+//                style = TextStyle(
+//                    color = Color.White,
+//                    fontFamily = FontFamily(Font(R.font.manrope_extrabold))
+//                )
+//            )
+//        }
         Row(
             modifier = modifier,
             verticalAlignment = Alignment.CenterVertically
         ) {
 
-            ScanningComponentsStarted(modifier = Modifier.weight(2f), viewModel = viewModel)
+            LaunchedEffect(key1 = progressCompleted) {
+                if (progressCompleted == true) {
+                    delay(3000)
+                    viewModel.isScanningDone = true
+                }
+            }
+
+            ScanningComponentsStarted(modifier = Modifier.weight(2f)
+                .fillMaxHeight()
+                .align(Alignment.CenterVertically), viewModel = viewModel)
             Spacer(modifier = Modifier.weight(0.2f))
             Box(
                 modifier = Modifier
@@ -181,8 +191,8 @@ fun ScanningStarted(modifier: Modifier, viewModel: MainViewModel, navController:
                             shape = CircleShape
                         ),
                     colors = listOf(
-                        Color(0xFFEFAF24),
-                        Color(0xFFEFAF24)
+                        Color(0.83f,0.65f,0.25f,0.8f),
+                        Color(0.83f,0.65f,0.25f,0.8f)
                     )
                 )
                 Box(
@@ -207,15 +217,16 @@ fun ScanningStarted(modifier: Modifier, viewModel: MainViewModel, navController:
                     ) {
                         Text(
                             modifier = Modifier.padding(10.dp),
+                            maxLines = 3,
                             text = if (progressCompleted) {
-                                "Click for Reports"
+                                "Scanning Complete"
                             } else {
-                                "Scanning is Progress"
+                                "Scanning Your Vehicle"
                             },
                             style = TextStyle(
                                 color = Color.White,
                                 textAlign = TextAlign.Center,
-                                fontSize = 8.sp,
+                                fontSize = 14.sp,
                                 fontFamily = FontFamily(Font(R.font.manrope_extrabold))
                             )
                         )
@@ -236,42 +247,55 @@ private fun ScanningComponentsStarted(viewModel: MainViewModel, modifier: Modifi
             Color(0xFF76ADFF).copy(alpha = 0.2f)
         )
     )
-    LazyVerticalStaggeredGrid(modifier = modifier, columns = StaggeredGridCells.Fixed(2)) {
-        itemsIndexed(viewModel.scanningComponents) { index, item ->
-            Box(
-                modifier = Modifier
-                    .padding(horizontal = 5.dp, vertical = 5.dp)
-                    .clickable {
+    Column(modifier = modifier, verticalArrangement = Arrangement.Center) {
+        Text(
+            modifier = Modifier.padding(10.dp),
+            text = "Scanning Components",
+            style = TextStyle(
+                color = Color.White,
+                fontFamily = FontFamily(Font(R.font.manrope_extrabold))
+            )
+        )
+        LazyVerticalStaggeredGrid(modifier = Modifier, columns = StaggeredGridCells.Fixed(1)) {
+            itemsIndexed(viewModel.scanningComponents) { index, item ->
+                Box(
+                    modifier = Modifier
+                        .padding(horizontal = 5.dp, vertical = 5.dp)
+                        .clickable {
 
-                    }
-                    .background(
-                        brush = backGroundGradient,
-                        shape = RoundedCornerShape(size = 8.dp)
-                    )
-                    .padding(10.dp),
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Text(
-                        modifier = Modifier.weight(2f),
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis,
-                        text = item,
-                        style = TextStyle(
-                            fontSize = 10.sp,
-                            color = Color.White,
-                            fontFamily = FontFamily(Font(R.font.manrope_extrabold))
+                        }
+                        .background(
+                            brush = backGroundGradient,
+                            shape = RoundedCornerShape(size = 8.dp)
                         )
-                    )
-                    Spacer(modifier = Modifier.weight(0.2f))
-                    ShowingErrorCodes(
-                        modifier = Modifier.weight(0.5f),
-                        index = index,
-                        viewModel = viewModel
-                    )
+                        .padding(10.dp),
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            modifier = Modifier.weight(2f),
+                            maxLines = 2,
+                            overflow = TextOverflow.Ellipsis,
+                            text = item,
+                            style = TextStyle(
+                                fontSize = 14.sp,
+                                color = Color.White,
+                                fontFamily = FontFamily(Font(R.font.manrope_extrabold))
+                            )
+                        )
+                        Spacer(modifier = Modifier.weight(0.2f))
+                        Column(Modifier.weight(0.5f)) {
+                            ShowingErrorCodes(
+                                modifier = Modifier.align(Alignment.End),
+                                index = index,
+                                item = item,
+                                viewModel = viewModel
+                            )
+                        }
+                    }
                 }
             }
         }
@@ -322,26 +346,49 @@ fun GradientProgress(
 }
 
 @Composable
-private fun ShowingErrorCodes(modifier: Modifier, viewModel: MainViewModel, index: Int) {
+private fun ShowingErrorCodes(
+    modifier: Modifier,
+    viewModel: MainViewModel,
+    index: Int,
+    item: String
+) {
     Row(
         modifier = modifier
     ) {
         if (viewModel.listOfScanningDone.contains(index)) {
-            if (index == 0) {
+            if (item == "Engine") {
                 Image(
-                    modifier = Modifier.size(12.dp),
+                    modifier = Modifier.size(15.dp),
                     painter = painterResource(id = R.drawable.critical),
                     contentDescription = ""
                 )
-            } else if (index == 4) {
+            } else if (item == "Body Control" && viewModel.scannedCount % 2 == 0) {
                 Image(
-                    modifier = Modifier.size(12.dp),
+                    modifier = Modifier.size(15.dp),
+                    painter = painterResource(id = R.drawable.low),
+                    contentDescription = ""
+                )
+            } else if (item == "Airbag" && viewModel.scannedCount % 2 == 0) {
+                Image(
+                    modifier = Modifier.size(15.dp),
+                    painter = painterResource(id = R.drawable.low),
+                    contentDescription = ""
+                )
+            } else if (item == "Electronic Steering" && viewModel.scannedCount % 2 == 1) {
+                Image(
+                    modifier = Modifier.size(15.dp),
+                    painter = painterResource(id = R.drawable.critical),
+                    contentDescription = ""
+                )
+            } else if (item == "Breaking System" && viewModel.scannedCount % 2 == 1) {
+                Image(
+                    modifier = Modifier.size(15.dp),
                     painter = painterResource(id = R.drawable.low),
                     contentDescription = ""
                 )
             } else {
                 Image(
-                    modifier = Modifier.size(12.dp),
+                    modifier = Modifier.size(15.dp),
                     painter = painterResource(id = R.drawable.circle_tick),
                     contentDescription = ""
                 )

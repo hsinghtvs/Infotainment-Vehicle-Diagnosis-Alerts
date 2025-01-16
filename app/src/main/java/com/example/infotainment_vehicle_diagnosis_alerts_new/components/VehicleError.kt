@@ -44,6 +44,7 @@ import com.example.infotainment_vehicle_diagnosis_alerts_new.model.Severity
 import com.example.infotainment_vehicle_diagnosis_alerts_new.navigation.NavigationItem
 import org.json.JSONArray
 import org.json.JSONObject
+import java.io.InputStream
 
 @Composable
 fun VehicleError(modifier: Modifier, viewModel: MainViewModel, navController: NavController) {
@@ -57,7 +58,7 @@ fun ErrorSection(modifier: Modifier, navController: NavController, viewModel: Ma
 
     viewModel.severityHashMap.clear()
     val context = LocalContext.current
-    val carpmObject = JSONObject(loadErrors(context))
+    val carpmObject = JSONObject(loadErrors(context,viewModel))
     val filterErrorCodes = JSONArray()
     val groupErrorCodeArray = HashMap<String, ArrayList<JSONObject>>()
     val modules = ArrayList<String>()
@@ -210,8 +211,8 @@ fun ErrorSection(modifier: Modifier, navController: NavController, viewModel: Ma
         )
         if (viewModel.isScanningDone) {
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.End,
+                modifier = Modifier.fillMaxWidth().padding(start = 40.dp),
+                horizontalArrangement = Arrangement.Start,
                 verticalAlignment = Alignment.CenterVertically
             ) {
 //                if (viewModel.isScanningDone) {
@@ -229,28 +230,28 @@ fun ErrorSection(modifier: Modifier, navController: NavController, viewModel: Ma
 
                 Box(
                     modifier = Modifier
-                        .padding(vertical = 10.dp)
-                        .background(
-                            color = Color(0xFFFFFFFF).copy(alpha = 0.3f),
-                            shape = RoundedCornerShape(20.dp)
-                        )
-                        .border(1.dp, brush = buttonStroke, shape = RoundedCornerShape(15.dp))
-                        .background(
-                            brush =
-                            nonSelectedGradient,
-                            shape = RoundedCornerShape(
-                                topStart = 30.dp,
-                                topEnd = 30.dp,
-                                bottomEnd = 30.dp,
-                                bottomStart = 30.dp
-                            )
-
-                        ),
+                        .padding(vertical = 10.dp),
+//                        .background(
+//                            color = Color(0xFFFFFFFF).copy(alpha = 0.3f),
+//                            shape = RoundedCornerShape(20.dp)
+//                        )
+//                        .border(1.dp, brush = buttonStroke, shape = RoundedCornerShape(15.dp))
+//                        .background(
+//                            brush =
+//                            nonSelectedGradient,
+//                            shape = RoundedCornerShape(
+//                                topStart = 30.dp,
+//                                topEnd = 30.dp,
+//                                bottomEnd = 30.dp,
+//                                bottomStart = 30.dp
+//                            )
+//
+//                        ),
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
                         modifier = Modifier.padding(vertical = 5.dp, horizontal = 10.dp),
-                        text = "ERROR SECTION",
+                        text = "Vehicle scan has detected the following errors",
                         style = TextStyle(
                             color = Color.White,
                             fontFamily = FontFamily(Font(R.font.manrope_semibold))
@@ -413,41 +414,42 @@ private fun ErrorBox(
                     )
                 )
                 Spacer(modifier = Modifier.weight(1f))
-                var buttonStroke = Brush.linearGradient(
-                    listOf(
-                        Color(0xFFFFFFFF).copy(alpha = 1f),
-                        Color(0xFFFFFFFF).copy(alpha = 0.8f),
-                        Color(0xFFFFFFFF).copy(alpha = 0.8f),
-                        Color(0xFFFFFFFF).copy(alpha = 1f)
-                    )
-                )
-                ClickableText(
-                    onClick = {
-                        selectedError = 0
-                        viewModel.setName(errorCodesList)
-                        viewModel.criticalSeverity = critical
-                        viewModel.highSeverity = high
-                        viewModel.lowSeverity = low
-                        viewModel.selectedErrorName = moduleName
-                        navController.navigate(NavigationItem.ErrorReports.route)
-                    },
-                    modifier = Modifier
-                        .background(
-                            color = Color(0xFFFFFFFF).copy(alpha = 0.3f),
-                            shape = RoundedCornerShape(20.dp)
-                        )
-                        .border(1.dp, brush = buttonStroke, shape = RoundedCornerShape(20.dp))
-                        .background(
-                            brush =
-                            nonSelectedGradient,
-                            shape = RoundedCornerShape(20.dp)
-                        )
-                        .padding(horizontal = 15.dp, vertical = 5.dp),
-                    text = AnnotatedString("View"),
-                    style = TextStyle(color = Color.White, textAlign = TextAlign.Center)
-                )
+//                var buttonStroke = Brush.linearGradient(
+//                    listOf(
+//                        Color(0xFFFFFFFF).copy(alpha = 1f),
+//                        Color(0xFFFFFFFF).copy(alpha = 0.8f),
+//                        Color(0xFFFFFFFF).copy(alpha = 0.8f),
+//                        Color(0xFFFFFFFF).copy(alpha = 1f)
+//                    )
+//                )
+//                ClickableText(
+//                    onClick = {
+//                        selectedError = 0
+//                        viewModel.setName(errorCodesList)
+//                        viewModel.criticalSeverity = critical
+//                        viewModel.highSeverity = high
+//                        viewModel.lowSeverity = low
+//                        viewModel.selectedErrorName = moduleName
+//                        navController.navigate(NavigationItem.ErrorReports.route)
+//                    },
+//                    modifier = Modifier
+//                        .background(
+//                            color = Color(0xFFFFFFFF).copy(alpha = 0.3f),
+//                            shape = RoundedCornerShape(20.dp)
+//                        )
+//                        .border(1.dp, brush = buttonStroke, shape = RoundedCornerShape(20.dp))
+//                        .background(
+//                            brush =
+//                            nonSelectedGradient,
+//                            shape = RoundedCornerShape(20.dp)
+//                        )
+//                        .padding(horizontal = 15.dp, vertical = 5.dp),
+//                    text = AnnotatedString("View"),
+//                    style = TextStyle(color = Color.White, textAlign = TextAlign.Center)
+//                )
             }
             Row(
+                modifier = Modifier.padding(end = 15.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -464,13 +466,49 @@ private fun ErrorBox(
                     count = high
                 )
                 ErrorCounts(
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier.weight(1.2f),
                     image = R.drawable.low,
                     name = "Low",
                     count = low
                 )
             }
         }
+        var buttonStroke = Brush.linearGradient(
+            listOf(
+                Color(0xFFFFFFFF).copy(alpha = 1f),
+                Color(0xFFFFFFFF).copy(alpha = 0.8f),
+                Color(0xFFFFFFFF).copy(alpha = 0.8f),
+                Color(0xFFFFFFFF).copy(alpha = 1f)
+            )
+        )
+        ClickableText(
+            onClick = {
+                selectedError = 0
+                viewModel.setName(errorCodesList)
+                viewModel.criticalSeverity = critical
+                viewModel.highSeverity = high
+                viewModel.lowSeverity = low
+                viewModel.selectedErrorName = moduleName
+                navController.navigate(NavigationItem.ErrorReports.route)
+            },
+
+            modifier = Modifier
+                .padding(end = 10.dp)
+                .align(Alignment.CenterEnd)
+                .background(
+                    color = Color(0xFFFFFFFF).copy(alpha = 0.3f),
+                    shape = RoundedCornerShape(20.dp)
+                )
+                .border(1.dp, brush = buttonStroke, shape = RoundedCornerShape(20.dp))
+                .background(
+                    brush =
+                    nonSelectedGradient,
+                    shape = RoundedCornerShape(20.dp)
+                )
+                .padding(horizontal = 15.dp, vertical = 5.dp),
+            text = AnnotatedString("View"),
+            style = TextStyle(color = Color.White, textAlign = TextAlign.Center)
+        )
     }
 }
 
@@ -488,7 +526,7 @@ private fun ErrorCounts(
         horizontalArrangement = Arrangement.Center
     ) {
         Image(
-            modifier = Modifier.size(10.dp),
+            modifier = Modifier.size(20.dp),
             painter = painterResource(id = image),
             contentDescription = ""
         )
@@ -500,7 +538,7 @@ private fun ErrorCounts(
             text = name,
             style = TextStyle(
                 color = Color.White,
-                fontSize = 10.sp,
+                fontSize = 14.sp,
                 fontFamily = FontFamily(Font(R.font.manrope_medium))
             )
         )
@@ -510,7 +548,7 @@ private fun ErrorCounts(
             text = count.toString(),
             style = TextStyle(
                 color = Color(0xFF3DED4F),
-                fontSize = 10.sp,
+                fontSize = 14.sp,
                 fontFamily = FontFamily(Font(R.font.manrope_bold))
             )
         )
@@ -519,9 +557,14 @@ private fun ErrorCounts(
 }
 
 
-fun loadErrors(context: Context): String {
+fun loadErrors(context: Context, viewModel: MainViewModel): String {
     var json: String? = null
-    val inputStream = context.assets.open("faults.json")
+    var inputStream : InputStream = context.assets.open("faultsEven.json")
+    if(viewModel.scannedCount %2 == 0){
+        inputStream = context.assets.open("faultsEven.json")
+    } else {
+        inputStream = context.assets.open("faultsOdd.json")
+    }
     val size = inputStream.available()
     val buffer = ByteArray(size)
     inputStream.read(buffer)

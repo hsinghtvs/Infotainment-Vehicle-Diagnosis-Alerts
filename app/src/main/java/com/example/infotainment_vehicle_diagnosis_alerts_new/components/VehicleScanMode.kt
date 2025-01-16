@@ -19,7 +19,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -43,15 +42,21 @@ fun VehicleNotInScanMode(navController: NavController, viewModel: MainViewModel)
             .background(brush = backgroundGradient),
     ) {
 
-        Column (
+        Column(
             modifier = Modifier.weight(1f)
-        ){
+        ) {
             Row(
                 modifier = Modifier
                     .padding(10.dp)
                     .fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                verticalAlignment = Alignment.CenterVertically
             ) {
+                Image(
+                    modifier = Modifier.size(35.dp),
+                    painter = painterResource(id = R.drawable.alerts_logo),
+                    contentDescription = ""
+                )
+                Spacer(modifier = Modifier.size(10.dp))
                 Text(
                     modifier = Modifier.padding(10.dp),
                     text = "VEHICLE DIGITAL DIAGNOSIS",
@@ -62,13 +67,12 @@ fun VehicleNotInScanMode(navController: NavController, viewModel: MainViewModel)
                 )
             }
 
-            Box(modifier = Modifier.fillMaxHeight()){
+            Box(modifier = Modifier.fillMaxHeight()) {
                 Image(
                     modifier = Modifier
                         .align(Alignment.Center),
                     painter = painterResource(id = R.drawable.car_health),
                     contentDescription = "",
-                    contentScale = ContentScale.FillBounds
                 )
             }
         }
